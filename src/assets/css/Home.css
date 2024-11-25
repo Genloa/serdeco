@@ -1,11 +1,12 @@
 /* Estilo general del carrusel */
 #carouselExampleAutoplaying {
     position: relative;
-    max-width: 800px; /* Ajusta el ancho máximo según tu diseño */
-    margin: 0; /* Centra el carrusel en la página */
+    max-width: 100%; /* Cambiado a 100% para adaptarse a pantallas más pequeñas */
+    width: 800px; /* Ancho máximo para pantallas grandes */
+    margin: 0 auto; /* Centra el carrusel en la página */
     border-radius: 10px; /* Bordes redondeados */
     overflow: hidden; /* Oculta el desbordamiento */
-    top: -10px; /* Ajusta este valor según sea necesario */
+    top: 30px; /* Ajusta este valor según sea necesario */
 }
 
 /* Centrar verticalmente en la página */
@@ -24,6 +25,8 @@ body {
 .carousel-inner img {
     border-radius: 10px; /* Bordes redondeados para las imágenes */
     transition: transform 0.5s ease; /* Transición suave al hacer hover */
+    width: 100%; /* Asegura que las imágenes ocupen todo el ancho del carrusel */
+    height: auto; /* Mantiene la proporción de las imágenes */
 }
 
 .carousel-inner img:hover {
@@ -59,7 +62,7 @@ body {
     }
 }
 
-/* Estilo general de la seccion de servicios */
+/* Estilo general de la sección de servicios */
 .direc {
     background-color: #f8f9fa; /* Color de fondo claro */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
@@ -74,15 +77,34 @@ body {
     text-decoration: none; /* Sin subrayado */
 }
 
-/* Estilo del logo */
+/* Estilo del logo en la marca del navbar */
 .direc-brand img {
     margin-right: 20px; /* Espacio entre el logo y el texto */
-    border-radius: 20%;  /*Bordes redondeados para el logo */
+    border-radius: 20%; /* Bordes redondeados para el logo */
 }
 
-/* Estilo al pasar el mouse sobre la marca 
+/* Estilo al pasar el mouse sobre la marca */
+/*
 .direc-brand:hover {
-    color: #007bff;  Color al pasar el mouse sobre el texto 
-}*/
+    color: #007bff; // Color al pasar el mouse sobre el texto 
+}
+*/
 
+/* Media Queries para mejorar la responsividad en pantallas pequeñas */
 
+@media (max-width: 576px) {
+    #carouselExampleAutoplaying {
+        max-width: 100%; /* Asegura que el carrusel ocupe todo el ancho en pantallas pequeñas */
+        top: -5px; /* Ajusta este valor si es necesario para alineación visual en móviles*/
+    }
+
+    .direc-brand img {
+        width: 50px; /* Tamaño más pequeño del logo en pantallas pequeñas */
+        height: auto; 
+        margin-right: 10px; /* Menos espacio entre el logo y el texto en móviles*/
+    }
+    
+    .direc {
+        padding: 0.5rem; /* Menos espaciado interno en pantallas pequeñas*/
+    }
+}
