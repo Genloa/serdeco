@@ -5,7 +5,6 @@
     margin: 0; /* Centra el carrusel en la página */
     border-radius: 10px; /* Bordes redondeados */
     overflow: hidden; /* Oculta el desbordamiento */
-    border-color: solid red;
     top: -10px; /* Ajusta este valor según sea necesario */
 }
 
@@ -42,7 +41,7 @@ body {
 /* Iconos de los controles */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: white; /* Color de fondo para los iconos */
+    background-color: rgba(34, 26, 26, 0.425); /* Color de fondo para los iconos */
     border-radius: 50%; /* Bordes redondeados para los iconos */
 }
 
@@ -59,3 +58,31 @@ body {
         display: none; /* Oculta los controles en pantallas pequeñas */
     }
 }
+
+/* Estilo general de la seccion de servicios */
+.direc {
+    background-color: #f8f9fa; /* Color de fondo claro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 1rem; /* Espaciado interno */
+}
+
+/* Estilo de la marca del navbar */
+.direc-brand {
+    display: flex; /* Usar flexbox para alinear el logo y el texto */
+    align-items: center; /* Centrar verticalmente */
+    color: #343a40; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+}
+
+/* Estilo del logo */
+.direc-brand img {
+    margin-right: 20px; /* Espacio entre el logo y el texto */
+    border-radius: 20%;  /*Bordes redondeados para el logo */
+}
+
+/* Estilo al pasar el mouse sobre la marca 
+.direc-brand:hover {
+    color: #007bff;  Color al pasar el mouse sobre el texto 
+}*/
+
+
