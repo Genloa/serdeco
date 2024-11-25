@@ -1,0 +1,61 @@
+/* Estilo general del carrusel */
+#carouselExampleAutoplaying {
+    position: relative;
+    max-width: 800px; /* Ajusta el ancho máximo según tu diseño */
+    margin: 0; /* Centra el carrusel en la página */
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Oculta el desbordamiento */
+    border-color: solid red;
+    top: -10px; /* Ajusta este valor según sea necesario */
+}
+
+/* Centrar verticalmente en la página */
+html, body {
+    height: 100%; /* Asegura que el body ocupe toda la altura de la ventana */
+    margin: 0; /* Elimina márgenes por defecto */
+}
+
+body {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Estilo de las imágenes del carrusel */
+.carousel-inner img {
+    border-radius: 10px; /* Bordes redondeados para las imágenes */
+    transition: transform 0.5s ease; /* Transición suave al hacer hover */
+}
+
+.carousel-inner img:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+
+/* Estilo de los controles del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; /* Ancho de los botones */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    border-radius: 50%; /* Botones redondeados */
+}
+
+/* Iconos de los controles */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: white; /* Color de fondo para los iconos */
+    border-radius: 50%; /* Bordes redondeados para los iconos */
+}
+
+/* Visibilidad de los controles al pasar el mouse */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0); /* Fondo más oscuro al hacer hover */
+}
+
+/* Estilo para ocultar los controles en dispositivos pequeños */
+@media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none; /* Oculta los controles en pantallas pequeñas */
+    }
+}
