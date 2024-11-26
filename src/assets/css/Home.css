@@ -56,10 +56,26 @@ body {
 
 /* Estilo para ocultar los controles en dispositivos pequeños */
 @media (max-width: 768px) {
+    #carouselExampleAutoplaying {
+        max-width: 100%; /* Asegura que el carrusel ocupe todo el ancho en pantallas pequeñas */
+        top: -5px; /* Ajusta este valor si es necesario para alineación visual en móviles*/
+    }
+
+    .direc-brand img {
+        width: 50px; /* Tamaño más pequeño del logo en pantallas pequeñas */
+        height: auto; 
+        margin-right: 10px; /* Menos espacio entre el logo y el texto en móviles*/
+    }
+    
+    .direc {
+        padding: 0.5rem; /* Menos espaciado interno en pantallas pequeñas*/
+    }
+    
     .carousel-control-prev,
     .carousel-control-next {
         display: none; /* Oculta los controles en pantallas pequeñas */
     }
+
 }
 
 /* Estilo general de la sección de servicios */
@@ -81,30 +97,4 @@ body {
 .direc-brand img {
     margin-right: 20px; /* Espacio entre el logo y el texto */
     border-radius: 20%; /* Bordes redondeados para el logo */
-}
-
-/* Estilo al pasar el mouse sobre la marca */
-/*
-.direc-brand:hover {
-    color: #007bff; // Color al pasar el mouse sobre el texto 
-}
-*/
-
-/* Media Queries para mejorar la responsividad en pantallas pequeñas */
-
-@media (max-width: 576px) {
-    #carouselExampleAutoplaying {
-        max-width: 100%; /* Asegura que el carrusel ocupe todo el ancho en pantallas pequeñas */
-        top: -5px; /* Ajusta este valor si es necesario para alineación visual en móviles*/
-    }
-
-    .direc-brand img {
-        width: 50px; /* Tamaño más pequeño del logo en pantallas pequeñas */
-        height: auto; 
-        margin-right: 10px; /* Menos espacio entre el logo y el texto en móviles*/
-    }
-    
-    .direc {
-        padding: 0.5rem; /* Menos espaciado interno en pantallas pequeñas*/
-    }
 }
