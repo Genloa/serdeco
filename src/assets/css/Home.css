@@ -2,11 +2,12 @@
 #carouselExampleAutoplaying {
     position: relative;
     max-width: 100%; /* Cambiado a 100% para adaptarse a pantallas más pequeñas */
-    width: 800px; /* Ancho máximo para pantallas grandes */
+    width: 1100px; /* Ancho máximo para pantallas grandes */
+    height: 400px;
     margin: 0 auto; /* Centra el carrusel en la página */
     border-radius: 10px; /* Bordes redondeados */
     overflow: hidden; /* Oculta el desbordamiento */
-    top: 30px; /* Ajusta este valor según sea necesario */
+    top: 90px; /* Ajusta este valor según sea necesario */
 }
 
 /* Centrar verticalmente en la página */
@@ -54,6 +55,30 @@ body {
     background-color: rgba(0, 0, 0, 0); /* Fondo más oscuro al hacer hover */
 }
 
+/* Estilo general de la sección de servicios */
+.direc {
+    background-color: #f8f9fa; /* Color de fondo claro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 1rem; /* Espaciado interno */
+    margin: 50px;
+    padding-top: 54px;
+}
+
+/* Estilo de la marca del navbar */
+.direc-brand {
+    display: flex; /* Usar flexbox para alinear el logo y el texto */
+    align-items: center; /* Centrar verticalmente */
+    color: #343a40; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+}
+
+/* Estilo del logo en la marca del navbar */
+.direc-brand img {
+    margin-right: 20px; /* Espacio entre el logo y el texto */
+    border-radius: 20%; /* Bordes redondeados para el logo */
+}
+
+
 /* Estilo para ocultar los controles en dispositivos pequeños */
 @media (max-width: 768px) {
     #carouselExampleAutoplaying {
@@ -76,25 +101,4 @@ body {
         display: none; /* Oculta los controles en pantallas pequeñas */
     }
 
-}
-
-/* Estilo general de la sección de servicios */
-.direc {
-    background-color: #f8f9fa; /* Color de fondo claro */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    padding: 1rem; /* Espaciado interno */
-}
-
-/* Estilo de la marca del navbar */
-.direc-brand {
-    display: flex; /* Usar flexbox para alinear el logo y el texto */
-    align-items: center; /* Centrar verticalmente */
-    color: #343a40; /* Color del texto */
-    text-decoration: none; /* Sin subrayado */
-}
-
-/* Estilo del logo en la marca del navbar */
-.direc-brand img {
-    margin-right: 20px; /* Espacio entre el logo y el texto */
-    border-radius: 20%; /* Bordes redondeados para el logo */
 }
