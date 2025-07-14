@@ -1,104 +1,114 @@
 /* Estilo general del carrusel */
 #carouselExampleAutoplaying {
-    position: relative;
-    max-width: 100%; /* Cambiado a 100% para adaptarse a pantallas más pequeñas */
-    width: 1100px; /* Ancho máximo para pantallas grandes */
-    height: 400px;
-    margin: 0 auto; /* Centra el carrusel en la página */
-    border-radius: 10px; /* Bordes redondeados */
-    overflow: hidden; /* Oculta el desbordamiento */
-    top: 90px; /* Ajusta este valor según sea necesario */
+  position: relative;
+  max-width: 100%; /* Cambiado a 100% para adaptarse a pantallas más pequeñas */
+  width: 100%; /* Ancho máximo para pantallas grandes */
+  height: 1100px;
+  margin-top: 550px; /* Espacio superior */
+
+  border-radius: 10px; /* Bordes redondeados */
+  overflow: hidden; /* Oculta el desbordamiento */
+  top: 90px; /* Ajusta este valor según sea necesario */
 }
 
 /* Centrar verticalmente en la página */
-html, body {
-    height: 100%; /* Asegura que el body ocupe toda la altura de la ventana */
-    margin: 0; /* Elimina márgenes por defecto */
+html,
+body {
+  height: 100%; /* Asegura que el body ocupe toda la altura de la ventana */
+  margin: 0; /* Elimina márgenes por defecto */
 }
 
 body {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
 }
 
 /* Estilo de las imágenes del carrusel */
 .carousel-inner img {
-    border-radius: 10px; /* Bordes redondeados para las imágenes */
-    transition: transform 0.5s ease; /* Transición suave al hacer hover */
-    width: 100%; /* Asegura que las imágenes ocupen todo el ancho del carrusel */
-    height: auto; /* Mantiene la proporción de las imágenes */
+  border-radius: 10px; /* Bordes redondeados para las imágenes */
+  transition: transform 0.5s ease; /* Transición suave al hacer hover */
+  width: 100%; /* Asegura que las imágenes ocupen todo el ancho del carrusel */
+  height: auto; /* Mantiene la proporción de las imágenes */
 }
 
 .carousel-inner img:hover {
-    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+  transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
 }
 
 /* Estilo de los controles del carrusel */
 .carousel-control-prev,
 .carousel-control-next {
-    width: 5%; /* Ancho de los botones */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    border-radius: 50%; /* Botones redondeados */
+  width: 5%; /* Ancho de los botones */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  border-radius: 50%; /* Botones redondeados */
 }
 
 /* Iconos de los controles */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgba(34, 26, 26, 0.425); /* Color de fondo para los iconos */
-    border-radius: 50%; /* Bordes redondeados para los iconos */
+  background-color: rgba(
+    34,
+    26,
+    26,
+    0.425
+  ); /* Color de fondo para los iconos */
+  border-radius: 50%; /* Bordes redondeados para los iconos */
 }
 
 /* Visibilidad de los controles al pasar el mouse */
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-    background-color: rgba(0, 0, 0, 0); /* Fondo más oscuro al hacer hover */
+  background-color: rgba(0, 0, 0, 0); /* Fondo más oscuro al hacer hover */
 }
 
 /* Estilo general de la sección de servicios */
 .direc {
-    background-color: #f8f9fa; /* Color de fondo claro */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    padding: 1rem; /* Espaciado interno */
-    margin: 50px;
-    padding-top: 54px;
+  background-color: #f8f9fa; /* Color de fondo claro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  padding: 1rem; /* Espaciado interno */
+  margin: 50px;
+  padding-top: 54px;
 }
 
 /* Estilo de la marca del navbar */
 .direc-brand {
-    display: flex; /* Usar flexbox para alinear el logo y el texto */
-    align-items: center; /* Centrar verticalmente */
-    color: #343a40; /* Color del texto */
-    text-decoration: none; /* Sin subrayado */
+  display: flex; /* Usar flexbox para alinear el logo y el texto */
+  align-items: center; /* Centrar verticalmente */
+  color: #343a40; /* Color del texto */
+  text-decoration: none; /* Sin subrayado */
 }
 
 /* Estilo del logo en la marca del navbar */
 .direc-brand img {
-    margin-right: 20px; /* Espacio entre el logo y el texto */
-    border-radius: 20%; /* Bordes redondeados para el logo */
+  margin-right: 20px; /* Espacio entre el logo y el texto */
+  border-radius: 20%; /* Bordes redondeados para el logo */
 }
-
 
 /* Estilo para ocultar los controles en dispositivos pequeños */
 @media (max-width: 768px) {
-    #carouselExampleAutoplaying {
-        max-width: 100%; /* Asegura que el carrusel ocupe todo el ancho en pantallas pequeñas */
-        top: -5px; /* Ajusta este valor si es necesario para alineación visual en móviles*/
-    }
+  #carouselExampleAutoplaying {
+    max-width: 100%; /* Asegura que el carrusel ocupe todo el ancho en pantallas pequeñas */
+    top: -5px; /* Ajusta este valor si es necesario para alineación visual en móviles*/
+  }
 
-    .direc-brand img {
-        width: 50px; /* Tamaño más pequeño del logo en pantallas pequeñas */
-        height: auto; 
-        margin-right: 10px; /* Menos espacio entre el logo y el texto en móviles*/
-    }
-    
-    .direc {
-        padding: 0.5rem; /* Menos espaciado interno en pantallas pequeñas*/
-    }
-    
-    .carousel-control-prev,
-    .carousel-control-next {
-        display: none; /* Oculta los controles en pantallas pequeñas */
-    }
+  .direc-brand img {
+    width: 50px; /* Tamaño más pequeño del logo en pantallas pequeñas */
+    height: auto;
+    margin-right: 10px; /* Menos espacio entre el logo y el texto en móviles*/
+  }
 
+  .direc {
+    padding: 0.5rem; /* Menos espaciado interno en pantallas pequeñas*/
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none; /* Oculta los controles en pantallas pequeñas */
+  }
+}
+
+/* Efecto de desvanecimiento para el carrusel */
+.carousel-fade .carousel-item {
+  transition: opacity 1s ease-in-out; /* Cambia la duración del fade */
 }
