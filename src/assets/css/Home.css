@@ -3,25 +3,18 @@
   position: relative;
   max-width: 100%; /* Cambiado a 100% para adaptarse a pantallas más pequeñas */
   width: 100%; /* Ancho máximo para pantallas grandes */
-  height: 1100px;
-  margin-top: 550px; /* Espacio superior */
+  height: auto; /* Cambiado de 100% a auto */
+  margin-top: 0; /* Elimina el gran espacio superior */
 
   border-radius: 10px; /* Bordes redondeados */
   overflow: hidden; /* Oculta el desbordamiento */
-  top: 90px; /* Ajusta este valor según sea necesario */
+  top: 0; /* Elimina el desplazamiento vertical */
 }
 
-/* Centrar verticalmente en la página */
-html,
-body {
-  height: 100%; /* Asegura que el body ocupe toda la altura de la ventana */
-  margin: 0; /* Elimina márgenes por defecto */
-}
 
-body {
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
+/* Si quieres un alto mínimo para el carrusel: */
+#carouselExampleAutoplaying .carousel-inner {
+  min-height: 350px; /* Ajusta según tu preferencia */
 }
 
 /* Estilo de las imágenes del carrusel */
@@ -111,4 +104,4 @@ body {
 /* Efecto de desvanecimiento para el carrusel */
 .carousel-fade .carousel-item {
   transition: opacity 1s ease-in-out; /* Cambia la duración del fade */
-}
+}}

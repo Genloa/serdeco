@@ -1,16 +1,7 @@
-import React from "react";
-import logo from "../../assets/img/logo_1.png";
-import logo2 from "../../assets/img/logo_2.png";
+import logo from "../assets/img/logo_1.png";
+import logo2 from "../assets/img/logo_2.png";
 
-function Dash() {
-  return (
-    <>
-      <Navbar></Navbar>
-    </>
-  );
-}
-
-function Navbar() {
+export default function Navbar() {
   return (
     <nav
       className="navbar navbar-expand-lg fixed-top navbar-light "
@@ -113,4 +104,3 @@ function Navbar() {
     </nav>
   );
 }
-export default Dash;
