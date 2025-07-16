@@ -4,25 +4,40 @@ import logo2 from "../assets/img/logo_2.png";
 export default function Navbar() {
   return (
     <nav
-      className="navbar navbar-expand-lg fixed-top navbar-light "
+      className="navbar navbar-expand-lg fixed-top navbar-light"
       style={{ backgroundColor: "#1c5e32" }}
     >
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           <img src={logo} alt="" width="140%" height="35" />
         </a>
-        <a className="navbar-brand ms-3 mb-1 " href="#">
+        <a className="navbar-brand ms-3 mb-1" href="#">
           <img src={logo2} alt="" width="90%" height="25" />
         </a>
+
+        {/* Botón hamburguesa para móvil */}
+        <button
+          className="btn btn-outline-light d-block d-lg-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span>
+            <i className="bi bi-list fs-1"></i>
+          </span>
+        </button>
 
         <div
           className="collapse navbar-collapse justify-content-center"
           id="navbarNavDropdown"
         >
-          <ul className="navbar-nav ">
+          <ul className="navbar-nav">
             <li className="nav-item">
               <a
-                className="nav-link active text-light "
+                className="nav-link active text-light"
                 aria-current="page"
                 href="#"
               >
@@ -32,7 +47,7 @@ export default function Navbar() {
             <li className="nav-item dropdown ">
               <a
                 className="nav-link dropdown-toggle text-light "
-                href="#"
+                href="#quienes-somos"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -41,18 +56,26 @@ export default function Navbar() {
               </a>
               <ul className="dropdown-menu  bg-success">
                 <li>
+                  <a
+                    className="dropdown-item text-light  "
+                    href="#quienes-somos"
+                  >
+                    Somos
+                  </a>
+                </li>
+                <li>
                   <a className="dropdown-item text-light  " href="#">
                     Historia
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item text-light" href="#">
+                  <a className="dropdown-item text-light" href="#misionyvision">
                     Misión Y Visión
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item text-light " href="#">
-                    Valores
+                  <a className="dropdown-item text-light " href="#testimonios">
+                    Testimonios
                   </a>
                 </li>
               </ul>
