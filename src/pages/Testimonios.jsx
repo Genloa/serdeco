@@ -22,7 +22,9 @@ export default function Testimonios() {
 
   return (
     <div className="container" id="testimonios">
-      <h2 className="text-center text-success fs-1 mt-5 mb-5">Testimonios</h2>
+      <h2 className="text-center text-success  mt-5 mb-5 display-3 fw-bold">
+        Testimonios
+      </h2>
       <div className="row">
         {testimonios.map((t, idx) => (
           <div className="col-md-4 mb-4" key={idx}>

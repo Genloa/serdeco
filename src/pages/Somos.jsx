@@ -6,7 +6,7 @@ export default function Somos() {
         <img src={somos} alt="Imagen sobre Serdeco" className="img-fluid" />
       </div>
       <div className="col-md-7">
-        <h2 className="text-success fw-bold">Serdeco</h2>
+        <h2 className="display-3 text-success fw-bold">Serdeco</h2>
         <p>¡Juntos por una ciudad limpia!</p>
         <h2 className="text-success fw-bold">¿Quiénes somos?</h2>
         <p>

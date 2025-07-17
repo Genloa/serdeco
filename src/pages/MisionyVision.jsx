@@ -10,10 +10,15 @@ export default function MisionyVision() {
           style={{
             backgroundColor: "#1c5e32",
             borderRight: "12px solid #8fc63f",
+            backgroundImage: `url(${ciudad})`,
+            backgroundRepeat: "repeat-x",
+            backgroundPosition: "bottom",
+            backgroundSize: "auto 100px",
+            paddingBottom: "8%",
           }}
         >
           <div className="text-center text-white mt-5">
-            <h4 className="mb-5 fs-2">Mision</h4>
+            <h4 className="display-4 mb-5  fw-bold">Mision</h4>
             <p className="fs-5 m-5 pb-1">
               Proveer soluciones innovadoras y servicios de gestión comercial a
               organizaciones públicas y privadas, para satisfacer a los clientes
@@ -23,78 +28,28 @@ export default function MisionyVision() {
               humano comprometido.
             </p>
           </div>
-          <div
-            style={{
-              bottom: "0",
-              //transform: "translateX(-10%)",
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={ciudad}
-              alt="Ciudad"
-              className="img-fluid"
-              style={{ width: "50%", height: "10%" }}
-            />
-            <img
-              src={ciudad}
-              alt="Ciudad"
-              className="img-fluid"
-              style={{ width: "50%", height: "10%" }}
-            />
-            <img
-              src={ciudad}
-              alt="Ciudad"
-              className="img-fluid"
-              style={{ width: "50%", height: "10%" }}
-            />
-          </div>
         </div>
 
         <div
           className="col mb-4 position-relative"
-          style={{ backgroundColor: "#FFD600" }}
+          style={{
+            backgroundColor: "#FFD600",
+            borderRight: "12px solid #8fc63f",
+            backgroundImage: `url(${cuiudad2})`,
+            backgroundRepeat: "repeat-x",
+            backgroundPosition: "bottom",
+            backgroundSize: "auto 100px",
+            paddingBottom: "8%",
+          }}
         >
           <div className="text-center mt-5">
-            <h4 className="mb-5 fs-2">Vision</h4>
+            <h4 className="display-4 mb-5  fw-bold">Vision</h4>
             <p className="fs-5 m-5 p-3">
               Ser reconocidos por la confiabilidad y eficacia en la prestación
               de multiservicios de gestión comercial, facturación y recaudación,
               a nivel nacional, ofreciendo soluciones oportunas y precisas para
               satisfacer las necesidades de los usuarios finales del servicio.
             </p>
-          </div>
-
-          <div
-            className="col"
-            style={{
-              bottom: "0",
-              transform: "translateX(-1%)",
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={cuiudad2}
-              alt="Ciudad"
-              className="img-fluid"
-              style={{ width: "50%", height: "10%" }}
-            />
-            <img
-              src={cuiudad2}
-              alt="Ciudad"
-              className="img-fluid"
-              style={{ width: "50%", height: "10%" }}
-            />
-            <img
-              src={cuiudad2}
-              alt="Ciudad"
-              className="img-fluid"
-              style={{ width: "50%", height: "10%" }}
-            />
           </div>
         </div>
       </div>

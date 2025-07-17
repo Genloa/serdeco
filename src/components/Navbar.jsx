@@ -14,7 +14,11 @@ export default function Navbar() {
         <a className="navbar-brand ms-3 mb-1" href="#">
           <img src={logo2} alt="" width="90%" height="25" />
         </a>
-
+        <style>
+          {`.dropdown-menu li:hover .dropdown-item {
+          color: #1c5e32 !important;
+          }`}
+        </style>
         {/* Botón hamburguesa para móvil */}
         <button
           className="btn btn-outline-light d-block d-lg-none"
@@ -64,18 +68,24 @@ export default function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item text-light  " href="#">
+                  <a className="dropdown-item text-light  " href="#Historia">
                     Historia
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item text-light  " href="#Valores">
+                    Valores
+                  </a>
+                </li>
+
+                <li>
+                  <a className="dropdown-item text-light " href="#testimonios">
+                    Testimonios
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item text-light" href="#misionyvision">
                     Misión Y Visión
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item text-light " href="#testimonios">
-                    Testimonios
                   </a>
                 </li>
               </ul>

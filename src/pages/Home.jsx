@@ -5,15 +5,21 @@ import carrusel1 from "../assets/img/carrusel1.jpg";
 import carrusel2 from "../assets/img/carrusel2.jpeg";
 import carrusel3 from "../assets/img/carrusel3.jpg";
 import Carrusel from "../components/Carrusel";
+import Contacto from "../components/Contacto";
 import ItemCarrusel from "../components/ItemCarrusel";
+import Modalinicio from "../components/Modalinicio";
 import Navbar from "../components/Navbar";
+import Historia from "./Historia";
 import MisionyVision from "./MisionyVision";
 import Somos from "./somos";
 import Testimonios from "./Testimonios";
+import Valores from "./Valores";
 
 function Home() {
   return (
     <>
+      <Contacto />
+      <Modalinicio />
       <Navbar />
 
       <Carrusel
@@ -46,6 +52,8 @@ function Home() {
       />
       <div className="container-fluid my-5">
         <Somos />
+        <Historia />
+        <Valores />
         <Testimonios />
         <MisionyVision />
       </div>
