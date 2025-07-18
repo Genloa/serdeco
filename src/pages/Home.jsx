@@ -14,8 +14,25 @@ import MisionyVision from "./MisionyVision";
 import Somos from "./somos";
 import Testimonios from "./Testimonios";
 import Valores from "./Valores";
+import operadora1 from "../assets/img/operadorasLogos/operadora1.png";
+import operadora2 from "../assets/img/operadorasLogos/operadora2.png";
+import operadora3 from "../assets/img/operadorasLogos/operadora3.png";
+import operadora4 from "../assets/img/operadorasLogos/operadora4.png";
+import operadora5 from "../assets/img/operadorasLogos/operadora5.png";
+import operadora6 from "../assets/img/operadorasLogos/operadora6.png";
+import operadora7 from "../assets/img/operadorasLogos/operadora7.png";
+import CarruselOperadoras from "./CarruselOperadoras";
 
 function Home() {
+  const operadoras = [
+    operadora1,
+    operadora2,
+    operadora3,
+    operadora4,
+    operadora5,
+    operadora6,
+    operadora7,
+  ];
   return (
     <>
       <Contacto />
@@ -50,6 +67,7 @@ function Home() {
           />,
         ]}
       />
+      <CarruselOperadoras logos={operadoras} />
       <div className="container-fluid my-5">
         <Somos />
         <Historia />

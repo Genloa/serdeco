@@ -11,7 +11,6 @@
   top: 0; /* Elimina el desplazamiento vertical */
 }
 
-
 /* Si quieres un alto mínimo para el carrusel: */
 #carouselExampleAutoplaying .carousel-inner {
   min-height: 350px; /* Ajusta según tu preferencia */
@@ -104,4 +103,4 @@
 /* Efecto de desvanecimiento para el carrusel */
 .carousel-fade .carousel-item {
   transition: opacity 1s ease-in-out; /* Cambia la duración del fade */
-}}
+}
