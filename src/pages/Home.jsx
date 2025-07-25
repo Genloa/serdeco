@@ -22,6 +22,7 @@ import operadora5 from "../assets/img/operadorasLogos/operadora5.png";
 import operadora6 from "../assets/img/operadorasLogos/operadora6.png";
 import operadora7 from "../assets/img/operadorasLogos/operadora7.png";
 import CarruselOperadoras from "./CarruselOperadoras";
+import MapaOperadoras from "./MapaOperadoras";
 
 function Home() {
   const operadoras = [
@@ -74,6 +75,7 @@ function Home() {
         <Valores />
         <Testimonios />
         <MisionyVision />
+        <MapaOperadoras />
       </div>
     </>
   );
