@@ -14,44 +14,52 @@ export default function ItemCarrusel({
       {/* Estilos responsivos para móvil */}
       <style>
         {`
-          @media (max-width: 576px) {
-            .itemc-img-main {
-              width: 11rem !important;
-              height: 14rem !important;
-            }
-            .itemc-img-bg1,
-            .itemc-img-bg2,
-            .itemc-img-bg3 {
-              display: none !important;
-            }
-            .itemc-img-circle {
-              width: 12rem !important;
-              height: 12rem !important;
-              margin-left: 4rem !important;
-              margin-top: 2rem !important;
-            }
-            .itemc-yellow-circle {
-              width: 5rem !important;
-              height: 5rem !important;
-              margin-left: 2rem !important;
-              margin-top: 8rem !important;
-            }
-            .itemc-text-col {
-              margin-top: 2rem !important;
-            }
-            .itemc-badge {
-              font-size: 1.2rem !important;
-              padding: 0.5rem 1rem !important;
-            }
-            .itemc-title {
-              font-size: 2rem !important;
-            }
-            .itemc-subtitle {
-              font-size: 1rem !important;
-            }
-          }
-        `}
+    @media (max-width: 576px) {
+      .itemc-img-main {
+        width: 11rem !important;
+        height: 14rem !important;
+      }
+      .itemc-img-bg1,
+      .itemc-img-bg2,
+      .itemc-img-bg3 {
+        display: none !important;
+      }
+      .itemc-img-circle {
+        width: 12rem !important;
+        height: 12rem !important;
+        margin-left: 4rem !important;
+        margin-top: 0.5rem !important; /* Menos espacio arriba */
+      }
+      .itemc-yellow-circle {
+        width: 5rem !important;
+        height: 5rem !important;
+        margin-left: 2rem !important;
+        margin-top: 2rem !important;
+      }
+      .itemc-text-col {
+        margin-top: 1rem !important; /* Ajuste de margen superior */
+      }
+      .itemc-badge {
+        font-size: 1.2rem !important;
+        padding: 0.5rem 1rem !important;
+      }
+      .itemc-title {
+        font-size: 1.8rem !important; /* Más compacto */
+      }
+      .itemc-subtitle {
+        font-size: 1.2rem !important; /* Más legible */
+        display: block !important;     /* Asegura que se muestre */
+      }
+        .cont {
+        width: 20rem !important;
+        height: 15rem !important;
+        }
+      
+    }
+      
+  `}
       </style>
+
       {/* Elementos decorativos de fondo */}
       <div className="position-absolute top-0 start-0 w-100 h-100">
         {/* Líneas curvas */}
@@ -96,14 +104,14 @@ export default function ItemCarrusel({
       </div>
 
       {/* Contenido principal */}
-      <div className="position-relative z-1 d-flex align-items-center min-vh-100 px-4 px-lg-5">
+      <div className="position-relative z-1 d-flex align-items-center min-vh-100 px-2 px-lg-5">
         <div className="container">
           <div className="row align-items-center g-5">
             {/* Lado izquierdo - Imagen */}
             <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start">
               <div className="position-relative">
                 <div
-                  className="position-relative"
+                  className="position-relative cont"
                   style={{ width: "20rem", height: "20rem" }}
                 >
                   <div

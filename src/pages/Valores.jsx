@@ -43,19 +43,47 @@ const valores = [
 
 export default function Valores() {
   return (
-    <section
-      id="Valores"
-      className="container-fluid w-100"
-      style={{
-        backgroundColor: "#1c5e32",
+    <section id="Valores" className="container-fluid w-100">
+      <style>
+        {`
+        #Valores {
+  background-color: #1c5e32;
+  background-image: url(${ciudad});
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: auto 100px;
+  padding: 1% 1% 6% 1%;
+}
 
-        backgroundImage: `url(${ciudad})`,
-        backgroundRepeat: "repeat-x",
-        backgroundPosition: "bottom",
-        backgroundSize: "auto 100px",
-        padding: "1% 1% 6% 1%",
-      }}
-    >
+        @media screen and (max-width: 768px) {
+    #Valores {
+  padding: 1% 1% 20% 1%;
+}
+
+  #Valores .display-3 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  #Valores .row > div {
+    width: 90% !important;
+    margin: 1rem auto !important;
+  }
+
+  #Valores .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #Valores .text-white {
+    text-align: center;
+  }
+
+  #Valores .display-2 {
+    font-size: 2.5rem;
+  }
+      }`}
+      </style>
       <div className="row justify-content-center">
         <div className="col col-sm-6 col-md-4 col-lg-3 text-white mt-5 ms-4">
           <h2 className="display-3 fw-bold mb-5 pt-5">Nuestros Valores</h2>
