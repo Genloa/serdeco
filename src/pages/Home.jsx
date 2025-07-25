@@ -11,7 +11,7 @@ import Modalinicio from "../components/Modalinicio";
 import Navbar from "../components/Navbar";
 import Historia from "./Historia";
 import MisionyVision from "./MisionyVision";
-import Somos from "./somos";
+import Somos from "../pages/Somos";
 import Testimonios from "./Testimonios";
 import Valores from "./Valores";
 import operadora1 from "../assets/img/operadorasLogos/operadora1.png";

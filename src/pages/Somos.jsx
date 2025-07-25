@@ -1,4 +1,5 @@
 import somos from "../assets/img/somos.png";
+
 export default function Somos() {
   return (
     <div className="row align-items-center m-5" id="quienes-somos">
