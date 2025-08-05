@@ -119,7 +119,7 @@ export default function Navbar() {
               </ul>
             </li>
             <li className="nav-item ">
-              <a className="nav-link text-light" href="#">
+              <a className="nav-link text-light" href="#mapa">
                 Mapa de Cobertura
               </a>
             </li>
