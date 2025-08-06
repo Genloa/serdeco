@@ -19,5 +19,7 @@ model operadoras {
   estado       String  @db.Char(120)
   municipio    String  @db.Char(120)
   servicio     String  @db.Char(120)
+  url          String? @db.Char(255)
+  logo         String? @db.Char(255)
   estatus      String? @db.Char(50)
 }

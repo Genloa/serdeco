@@ -172,6 +172,7 @@ export default function MapaOperadoras() {
                           hover: {
                             fill: getColorByName(name),
                             outline: "none",
+                            cursor: esValido ? "pointer" : "default",
                           },
                           pressed: {
                             fill: "#FF8C00",
@@ -308,6 +309,61 @@ export default function MapaOperadoras() {
               >
                 Limpiar selección
               </button>
+              {/* Mostrar logos únicos de operadoras filtradas */}
+              {(() => {
+                const match = tooltipContent.match(/Estado: (.+)/);
+                const estadoSeleccionado = match ? match[1] : null;
+                const operadorasEstado = operadoras.filter(
+                  (op) => op.estado.trim() === estadoSeleccionado
+                );
+                // Solo operadoras con logo válido (no vacío ni null)
+                const logosUnicos = Array.from(
+                  new Map(
+                    operadorasEstado
+                      .filter((op) => op.logo && op.logo.trim().length > 0)
+                      .map((op) => [op.nombre.trim(), op])
+                  ).values()
+                );
+                if (logosUnicos.length === 0) return null;
+                return (
+                  <div
+                    className="d-flex flex-wrap justify-content-center align-items-center mt-4"
+                    style={{ gap: "24px", width: "100%" }}
+                  >
+                    {logosUnicos.map((op, idx) => (
+                      <div
+                        key={idx}
+                        className="text-center"
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          width: "140px",
+                        }}
+                      >
+                        <a
+                          href={op.url ? op.url.trim() : "#"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ display: "block" }}
+                        >
+                          <img
+                            src={op.logo.trim()}
+                            alt={op.nombre.trim()}
+                            style={{
+                              height: "70px",
+                              width: "120px",
+                              objectFit: "contain",
+                              display: "block",
+                              cursor: op.url ? "pointer" : "default",
+                            }}
+                          />
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
             </>
           )}
           {/* Mostrar mensaje solo cuando no hay estado seleccionado */}

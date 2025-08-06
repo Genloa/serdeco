@@ -1,6 +1,34 @@
-import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
-export default function CarruselOperadoras({ logos }) {
+export default function CarruselOperadoras() {
+  const [logos, setLogos] = useState([]);
+  const endpoint = "http://localhost:3002/api";
+
+  useEffect(() => {
+    fetchLogos();
+  }, []);
+
+  const fetchLogos = async () => {
+    try {
+      const response = await fetch(`${endpoint}/getOperadoras`);
+      const operadoras = await response.json();
+      // Filtrar logos únicos y válidos
+      const logosUnicos = Array.from(
+        new Map(
+          operadoras
+            .filter((op) => op.logo && op.logo.trim().length > 0)
+            .map((op) => [
+              op.nombre.trim(),
+              { src: op.logo.trim(), url: op.url ? op.url.trim() : "#" },
+            ])
+        ).values()
+      );
+      setLogos(logosUnicos);
+    } catch (error) {
+      console.error("Error fetching operadoras logos:", error);
+    }
+  };
+
   return (
     <div className="carrusel-operadoras">
       <style>
@@ -23,7 +51,7 @@ export default function CarruselOperadoras({ logos }) {
           .logo-wrapper {
             flex: 0 0 auto;
             width: 120px;
-            height: 90px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -31,7 +59,7 @@ export default function CarruselOperadoras({ logos }) {
 
           .logo-wrapper img {
             max-width: 100%;
-            max-height: 100%;
+            max-height: 60px;
             object-fit: contain;
           }
 
@@ -47,7 +75,10 @@ export default function CarruselOperadoras({ logos }) {
           @media (max-width: 768px) {
             .logo-wrapper {
               width: 80px;
-              height: 60px;
+              height: 40px;
+            }
+            .logo-wrapper img {
+              max-height: 50px;
             }
           }
         `}
@@ -56,14 +87,12 @@ export default function CarruselOperadoras({ logos }) {
       <div className="carrusel-track">
         {[...logos, ...logos].map((logo, idx) => (
           <div key={idx} className="logo-wrapper mt-2">
-            <img src={logo} alt={`logo-${idx}`} />
+            <a href={logo.url} target="_blank" rel="noopener noreferrer">
+              <img src={logo.src} alt={`logo-${idx}`} />
+            </a>
           </div>
         ))}
       </div>
     </div>
   );
 }
-
-CarruselOperadoras.propTypes = {
-  logos: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
