@@ -7,6 +7,8 @@ import cors from "cors";
 import express from "express";
 
 import operadoras from "./routes/operadoras/getOperadoras.routes.js";
+import oficinas from "./routes/oficinas/getOficinas.routes.js";
+import reclamos from "./routes/reclamos/createReclamo.routes.js";
 const app = express();
 
 // Usa el middleware CORS. Esto permite o restringe los recursos solicitados en la página web
@@ -18,6 +20,8 @@ app.use(cors());
 
 app.use(express.json({ limit: "10mb" }));
 app.use("/api", operadoras);
+app.use("/api", oficinas);
+app.use("/api", reclamos);
 
 app.listen(3002);
 

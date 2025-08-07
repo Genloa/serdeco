@@ -93,7 +93,7 @@ export default function Navbar() {
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle text-light "
-                href="#"
+                href="#antencioncliente"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -102,17 +102,26 @@ export default function Navbar() {
               </a>
               <ul className="dropdown-menu bg-success">
                 <li>
-                  <a className="dropdown-item text-light " href="#">
+                  <a
+                    className="dropdown-item text-light "
+                    href="#antencioncliente"
+                  >
                     Preguntas Frecuentes
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item text-light " href="#">
+                  <a
+                    className="dropdown-item text-light "
+                    href="#antencioncliente"
+                  >
                     Oficinas de Atención
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item text-light " href="#">
+                  <a
+                    className="dropdown-item text-light "
+                    href="#antencioncliente"
+                  >
                     Reclamo
                   </a>
                 </li>

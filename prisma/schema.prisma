@@ -23,3 +23,35 @@ model operadoras {
   logo         String? @db.Char(255)
   estatus      String? @db.Char(50)
 }
+
+model oficinas_atencion {
+  id        Int     @id @default(autoincrement())
+  nombre    String  @db.Char(120)
+  estado    String  @db.Char(120)
+  municipio String  @db.Char(120)
+  direccion String  @db.Char(255)
+  telefono  String? @db.Char(50)
+  correo    String? @db.Char(100)
+  horario   String? @db.Char(100)
+  estatus   String? @db.Char(50)
+}
+
+model preguntas_frecuentes {
+  id        Int     @id @default(autoincrement())
+  pregunta  String  @db.Char(255)
+  respuesta String  @db.Text
+  estatus   String? @db.Char(50)
+}
+
+model reclamos {
+  id       Int      @id @default(autoincrement())
+  nombre   String   @db.Char(120)
+  apellido String   @db.Char(120)
+  cedula   String   @db.Char(50)
+  cuenta   String?  @db.Char(12)
+  correo   String   @db.Char(100)
+  telefono String?  @db.Char(50)
+  mensaje  String   @db.Text
+  fecha    DateTime @default(now())
+  estatus  String?  @db.Char(50)
+}
