@@ -166,7 +166,7 @@ function FormReclamo({ onSubmit, defaultValues }) {
               {...register("mensaje")}
             />
             <label className="z-0" htmlFor="mensaje">
-              Detalles Reclamo:
+              Descripción:
             </label>
             {errors.mensaje?.message && (
               <div className="invalid-feedback">{errors.mensaje?.message}</div>

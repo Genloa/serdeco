@@ -18,6 +18,7 @@ import Valores from "./Valores";
 import CarruselOperadoras from "./CarruselOperadoras";
 import MapaOperadoras from "./MapaOperadoras";
 import AtencionCliente from "./AntencionCliente";
+import Footer from "./Footer";
 
 function Home() {
   return (
@@ -63,6 +64,7 @@ function Home() {
         <MisionyVision />
         <MapaOperadoras />
         <AtencionCliente />
+        <Footer />
       </div>
     </>
   );

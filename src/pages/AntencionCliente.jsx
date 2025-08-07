@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+import ciudad from "../assets/img/ciudadverde.svg";
 import FormReclamo from "../components/FormReclamo";
+import logo from "../assets/img/logo_1.png";
+import logo2 from "../assets/img/logo_2.png";
 
 export default function AtencionCliente() {
   const [open, setOpen] = useState(false);
@@ -84,7 +87,7 @@ export default function AtencionCliente() {
                 }}
               />
               <label className="btn btn-outline-success" htmlFor="btncheck3">
-                Hacer Reclamo
+                Contactanos
               </label>
             </div>
           </div>
@@ -145,10 +148,10 @@ export default function AtencionCliente() {
               }}
             >
               <div
-                className="card card-body"
+                className="border border-success rounded-4"
                 style={{
                   width: openReclamo ? "100%" : "0",
-                  padding: openReclamo ? "1rem" : "0",
+                  padding: openReclamo ? "0" : "0",
                   minWidth: 0,
                   minHeight: 0,
                 }}
@@ -384,9 +387,43 @@ function Reclamos() {
     }
   };
   return (
-    <div className="container">
-      <h3 className="text-center m-5">Reclamos</h3>
-      <FormReclamo onSubmit={onSubmit} defaultValues={defaultValues} />
+    <div className="row">
+      <div
+        className="col text-white rounded-start"
+        style={{
+          backgroundColor: "#1c5e32",
+          borderRight: "12px solid #FFD600",
+          backgroundImage: `url(${ciudad})`,
+          backgroundRepeat: "repeat-x",
+          backgroundPosition: "bottom",
+          backgroundSize: "auto 100px",
+          paddingBottom: "8%",
+        }}
+      >
+        <div className="d-flex justify-content-center align-items-center mt-4">
+          <img src={logo} alt="" width="10%" height="35" />
+
+          <img src={logo2} alt="" width="15%" height="25" />
+        </div>
+        <h3 className=" display-4 text-center m-5">Contactanos:</h3>
+        <ul className="list-group list-group-flush text-start m-5">
+          <li className="list-group-item list-group-item-success">
+            <strong>Teléfono:</strong> 0212-1234567
+          </li>
+          <li className="list-group-item  list-group-item-success">
+            <strong>Correo Electrónico:</strong>
+          </li>
+          <li className="list-group-item list-group-item-success">
+            <strong>Dirección Física:</strong>
+          </li>
+        </ul>
+      </div>
+      <div className="col m-5">
+        <h3 className="text-center m-5">
+          Puedes ingresar tu inquietud atraves del siguiente formulario:
+        </h3>
+        <FormReclamo onSubmit={onSubmit} defaultValues={defaultValues} />
+      </div>
     </div>
   );
 }
