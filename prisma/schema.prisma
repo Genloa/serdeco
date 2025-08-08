@@ -14,21 +14,21 @@ datasource db {
 }
 
 model operadoras {
-  interlocutor BigInt  @id
-  nombre       String  @db.Char(120)
-  estado       String  @db.Char(120)
-  municipio    String  @db.Char(120)
-  servicio     String  @db.Char(120)
-  url          String? @db.Char(255)
-  logo         String? @db.Char(255)
-  estatus      String? @db.Char(50)
+  interlocutor BigInt     @id
+  nombre       String     @db.Char(120)
+  estado       String     @db.Char(120)
+  municipio    String     @db.Char(120)
+  servicio     String     @db.Char(120)
+  url          String?    @db.Char(255)
+  logo         String?    @db.Char(255)
+  estatus      String?    @db.Char(50)
+  catastro     catastro[]
 }
 
 model oficinas_atencion {
   id        Int     @id @default(autoincrement())
   nombre    String  @db.Char(120)
   estado    String  @db.Char(120)
-  municipio String  @db.Char(120)
   direccion String  @db.Char(255)
   telefono  String? @db.Char(50)
   correo    String? @db.Char(100)
@@ -40,6 +40,7 @@ model preguntas_frecuentes {
   id        Int     @id @default(autoincrement())
   pregunta  String  @db.Char(255)
   respuesta String  @db.Text
+  rutaPdf   String? @db.Char(255)
   estatus   String? @db.Char(50)
 }
 
@@ -54,4 +55,25 @@ model reclamos {
   mensaje  String   @db.Text
   fecha    DateTime @default(now())
   estatus  String?  @db.Char(50)
+}
+
+model catastro {
+  interlocutor   BigInt
+  fecha          DateTime
+  tarifa         String?
+  cuentaContrato BigInt
+  ptoSuministro  BigInt
+  monto          Decimal    @db.Decimal(18, 2)
+  cnae           BigInt?
+  instalacion    String?
+  nombre         String
+  direccion      String
+  cicnor         String
+  cedula         String?
+  fechalta       String
+  fechbaja       String
+  contrato       BigInt     @id
+  telefono1      String?
+  telefono2      String?
+  operadoras     operadoras @relation(fields: [interlocutor], references: [interlocutor], onDelete: NoAction, onUpdate: NoAction, map: "operadora_catastro")
 }

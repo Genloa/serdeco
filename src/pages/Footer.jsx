@@ -21,7 +21,7 @@ export default function Footer() {
             href="#!"
             role="button"
           >
-            <i className="bi bi-facebook"></i>
+            <i className="bi bi-instagram"></i>
           </a>
           <a
             className="btn btn-outline-light btn-floating m-1"

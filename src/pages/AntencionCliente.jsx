@@ -3,11 +3,13 @@ import ciudad from "../assets/img/ciudadverde.svg";
 import FormReclamo from "../components/FormReclamo";
 import logo from "../assets/img/logo_1.png";
 import logo2 from "../assets/img/logo_2.png";
+import FormUsuarioBuscar from "../components/FormBuscarUsuario";
 
 export default function AtencionCliente() {
   const [open, setOpen] = useState(false);
   const [openOficina, setOpenOficina] = useState(false);
   const [openReclamo, setOpenReclamo] = useState(false);
+  const [openConsultaDeuda, setOpenConsultaDeuda] = useState(false);
   return (
     <div className="container-fluid w-100 pb-5" id="antencioncliente">
       <h2 className="text-center text-success mt-5 mb-5 display-4 fw-bold">
@@ -35,6 +37,7 @@ export default function AtencionCliente() {
                     if (next) {
                       setOpenOficina(false);
                       setOpenReclamo(false);
+                      setOpenConsultaDeuda(false);
                     }
                     return next;
                   });
@@ -58,6 +61,7 @@ export default function AtencionCliente() {
                     if (next) {
                       setOpen(false);
                       setOpenReclamo(false);
+                      setOpenConsultaDeuda(false);
                     }
                     return next;
                   });
@@ -81,6 +85,7 @@ export default function AtencionCliente() {
                     if (next) {
                       setOpen(false);
                       setOpenOficina(false);
+                      setOpenConsultaDeuda(false);
                     }
                     return next;
                   });
@@ -88,6 +93,29 @@ export default function AtencionCliente() {
               />
               <label className="btn btn-outline-success" htmlFor="btncheck3">
                 Contactanos
+              </label>
+              <input
+                type="checkbox"
+                className="btn-check"
+                id="btncheck4"
+                autoComplete="off"
+                aria-expanded={openConsultaDeuda}
+                aria-controls="collapseDeuda"
+                checked={openConsultaDeuda}
+                onChange={() => {
+                  setOpenConsultaDeuda((prev) => {
+                    const next = !prev;
+                    if (next) {
+                      setOpen(false);
+                      setOpenOficina(false);
+                      setOpenReclamo(false);
+                    }
+                    return next;
+                  });
+                }}
+              />
+              <label className="btn btn-outline-success" htmlFor="btncheck4">
+                Consulta de Deuda
               </label>
             </div>
           </div>
@@ -104,7 +132,7 @@ export default function AtencionCliente() {
               }}
             >
               <div
-                className="card card-body"
+                className="border border-success rounded-4"
                 style={{
                   width: open ? "100%" : "0",
                   padding: open ? "1rem" : "0",
@@ -117,16 +145,16 @@ export default function AtencionCliente() {
             </div>
 
             <div
-              id="collapseOficinas"
+              id="collapseOficinas "
               style={{
-                width: openOficina ? "100%" : "0",
+                width: openOficina ? "50%" : "0",
                 overflow: "hidden",
                 transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 display: "inline-block",
               }}
             >
               <div
-                className="card card-body"
+                className="border border-success rounded-4"
                 style={{
                   width: openOficina ? "100%" : "0",
                   padding: openOficina ? "1rem" : "0",
@@ -159,6 +187,27 @@ export default function AtencionCliente() {
                 {openReclamo && <Reclamos />}
               </div>
             </div>
+            <div
+              id="collapseDeuda"
+              style={{
+                width: openConsultaDeuda ? "80%" : "0",
+                overflow: "hidden",
+                transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                display: "inline-block",
+              }}
+            >
+              <div
+                className="border border-success rounded-4"
+                style={{
+                  width: openConsultaDeuda ? "100%" : "0",
+                  padding: openConsultaDeuda ? "0" : "0",
+                  minWidth: 0,
+                  minHeight: 0,
+                }}
+              >
+                {openConsultaDeuda && <ConsultaDeuda />}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -167,72 +216,60 @@ export default function AtencionCliente() {
 }
 
 function PreguntasFrecuentes() {
+  const [preguntas, setPreguntas] = useState([]);
+  const endpoint = "http://localhost:3002/api";
+
+  useEffect(() => {
+    fetchPreguntas();
+  }, [endpoint]);
+
+  const fetchPreguntas = async () => {
+    try {
+      const response = await fetch(`${endpoint}/getPreguntasFrecuentes`);
+      const data = await response.json();
+      setPreguntas(data);
+    } catch (error) {
+      console.error("Error fetching preguntas frecuentes:", error);
+    }
+  };
   return (
     <>
       <div className="accordion accordion-flush" id="accordionFlushExample">
-        <div className="accordion-item">
-          <h2 className="accordion-header">
-            <button
-              className="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseOne"
-              aria-expanded="false"
-              aria-controls="flush-collapseOne"
+        {preguntas.map((pregunta, idx) => (
+          <div className="accordion-item" key={pregunta.id || idx}>
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target={`#flush-collapseOne-${pregunta.id || idx}`}
+                aria-expanded="false"
+                aria-controls={`flush-collapseOne-${pregunta.id || idx}`}
+              >
+                {pregunta.pregunta}
+              </button>
+            </h2>
+            <div
+              id={`flush-collapseOne-${pregunta.id || idx}`}
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
             >
-              pregunta #1
-            </button>
-          </h2>
-          <div
-            id="flush-collapseOne"
-            className="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
-            <div className="accordion-body">cuerpo</div>
+              <div className="accordion-body">
+                {pregunta.respuesta}
+                {pregunta.rutaPdf && (
+                  <a
+                    className="btn btn-success ms-2 mt-1"
+                    href={pregunta.rutaPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Descargar PDF
+                  </a>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="accordion-item">
-          <h2 className="accordion-header">
-            <button
-              className="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseTwo"
-              aria-expanded="false"
-              aria-controls="flush-collapseTwo"
-            >
-              pregunta #2
-            </button>
-          </h2>
-          <div
-            id="flush-collapseTwo"
-            className="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
-            <div className="accordion-body">cuerpo</div>
-          </div>
-        </div>
-        <div className="accordion-item">
-          <h2 className="accordion-header">
-            <button
-              className="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseThree"
-              aria-expanded="false"
-              aria-controls="flush-collapseThree"
-            >
-              pregunta #3
-            </button>
-          </h2>
-          <div
-            id="flush-collapseThree"
-            className="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
-            <div className="accordion-body">cuerpo</div>
-          </div>
-        </div>
+        ))}
       </div>
     </>
   );
@@ -389,7 +426,7 @@ function Reclamos() {
   return (
     <div className="row">
       <div
-        className="col text-white rounded-start"
+        className="col text-white border rounded-start-5"
         style={{
           backgroundColor: "#1c5e32",
           borderRight: "12px solid #FFD600",
@@ -397,6 +434,7 @@ function Reclamos() {
           backgroundRepeat: "repeat-x",
           backgroundPosition: "bottom",
           backgroundSize: "auto 100px",
+
           paddingBottom: "8%",
         }}
       >
@@ -425,5 +463,68 @@ function Reclamos() {
         <FormReclamo onSubmit={onSubmit} defaultValues={defaultValues} />
       </div>
     </div>
+  );
+}
+
+function ConsultaDeuda() {
+  const [sabeCuenta, setSabeCuenta] = useState(null);
+
+  return (
+    <>
+      <div className="text-center">
+        <h3 className="display-4 text-success mt-5 mb-5">Consulta de Deuda</h3>
+        <p>
+          Para consultar tu deuda, necesitas tener a la mano tu número de cuenta
+          contrato.
+        </p>
+        <p>¿Sabes cuál es tu número de Cuenta Contrato?</p>
+        <div className="d-flex justify-content-center m-4">
+          <div className="form-check me-3">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="radioDefault"
+              id="radioDefault1"
+              checked={sabeCuenta === true}
+              onChange={() => setSabeCuenta(true)}
+            />
+            <label className="form-check-label" htmlFor="radioDefault1">
+              Si
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="radioDefault"
+              id="radioDefault2"
+              checked={sabeCuenta === false}
+              onChange={() => setSabeCuenta(false)}
+            />
+            <label className="form-check-label" htmlFor="radioDefault2">
+              No
+            </label>
+          </div>
+        </div>
+        {sabeCuenta === true && (
+          <p>
+            Puedes consultar tu deuda ingresando a la sección:
+            <section
+              className=" "
+              style={{ width: "100%", height: "700px", margin: "0% 0% 0% 15%" }}
+            >
+              <iframe
+                src="https://ov-capital.corpoelec.gob.ve/index.php/Login/saldo"
+                title="Vista externa"
+                width="100%"
+                height="100%"
+                style={{ border: "none" }}
+              />
+            </section>
+          </p>
+        )}
+        {sabeCuenta === false && <FormUsuarioBuscar />}
+      </div>
+    </>
   );
 }
