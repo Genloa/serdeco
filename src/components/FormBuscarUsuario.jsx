@@ -33,9 +33,9 @@ function FormUsuarioBuscar({ onSubmit, defaultValues }) {
     onSubmit(data, reset);
   };
   return (
-    <form className="m-5 w-50" onSubmit={handleSubmit(onSubmitForm)}>
+    <form className="row g-3" onSubmit={handleSubmit(onSubmitForm)}>
       <div className="row g-3 ">
-        <div className="col">
+        <div className="col-12">
           <div className="form-floating">
             <input
               type="text"
@@ -51,7 +51,7 @@ function FormUsuarioBuscar({ onSubmit, defaultValues }) {
             )}
           </div>
         </div>
-        <div className="col">
+        <div className="col-12">
           <div className="form-floating">
             <input
               type="text"
@@ -70,7 +70,7 @@ function FormUsuarioBuscar({ onSubmit, defaultValues }) {
       </div>
 
       <div className="modal-footer">
-        <button type="submit" className="btn btn-success mt-5">
+        <button type="submit" className="btn btn-success m-5">
           Buscar
         </button>
       </div>

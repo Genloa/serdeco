@@ -47,15 +47,16 @@ function FormReclamo({ onSubmit, defaultValues }) {
   };
   return (
     <form className="row g-3" onSubmit={handleSubmit(onSubmitForm)}>
-      <div className="row g-3 ">
-        <div className="col-4">
+      {/* Grupo de campos */}
+      <div className="row g-3">
+        {/* Nombre */}
+        <div className="col-12 col-md-4">
           <div className="form-floating">
             <input
               type="text"
               id="nombre"
               className={getInputClassName("nombre")}
               placeholder="nombre"
-              aria-label="nombre"
               {...register("nombre")}
             />
             <label htmlFor="nombre">Nombre</label>
@@ -64,14 +65,15 @@ function FormReclamo({ onSubmit, defaultValues }) {
             )}
           </div>
         </div>
-        <div className="col-4">
+
+        {/* Apellido */}
+        <div className="col-12 col-md-4">
           <div className="form-floating">
             <input
               type="text"
               id="apellido"
               className={getInputClassName("apellido")}
               placeholder="apellido"
-              aria-label="apellido"
               {...register("apellido")}
             />
             <label htmlFor="apellido">Apellido</label>
@@ -80,14 +82,15 @@ function FormReclamo({ onSubmit, defaultValues }) {
             )}
           </div>
         </div>
-        <div className="col-4">
+
+        {/* Cuenta */}
+        <div className="col-12 col-md-4">
           <div className="form-floating">
             <input
               type="text"
               id="cuenta"
               className={getInputClassName("cuenta")}
               placeholder="cuenta"
-              aria-label="cuenta"
               {...register("cuenta")}
             />
             <label htmlFor="cuenta">Cuenta Contrato</label>
@@ -96,15 +99,14 @@ function FormReclamo({ onSubmit, defaultValues }) {
             )}
           </div>
         </div>
-        <div className="col-4">
-          <div className="input-group ">
+
+        {/* Tipo de cédula + número */}
+        <div className="col-12 col-md-4">
+          <div className="input-group">
             <select
-              className={`form-select flex-grow-0 bg-light ${
-                errors.tipocedula ? "is-invalid" : ""
-              }`}
-              style={{ width: "80px" }}
-              aria-label="Tipo de cedula"
+              className={`form-select ${errors.tipoCedula ? "is-invalid" : ""}`}
               {...register("tipoCedula")}
+              style={{ maxWidth: "80px" }}
             >
               <option value="">Tipo</option>
               <option value="V">V</option>
@@ -114,60 +116,62 @@ function FormReclamo({ onSubmit, defaultValues }) {
               type="text"
               id="cedula"
               className={getInputClassName("cedula")}
-              placeholder="cedula"
-              aria-label="cedula"
+              placeholder="Cédula"
               {...register("cedula")}
             />
-            <label htmlFor="cedula"></label>
             {errors.cedula?.message && (
-              <div className="invalid-feedback">{errors.cedula?.message}</div>
+              <div className="invalid-feedback d-block">
+                {errors.cedula?.message}
+              </div>
             )}
           </div>
         </div>
-        <div className="col-4">
+
+        {/* Correo */}
+        <div className="col-12 col-md-4">
           <div className="form-floating">
             <input
-              type="text"
+              type="email"
               id="correo"
               className={getInputClassName("correo")}
               placeholder="correo"
-              aria-label="correo"
               {...register("correo")}
             />
-            <label htmlFor="correo">correo</label>
+            <label htmlFor="correo">Correo</label>
             {errors.correo?.message && (
               <div className="invalid-feedback">{errors.correo?.message}</div>
             )}
           </div>
         </div>
-        <div className="col-4">
+
+        {/* Teléfono */}
+        <div className="col-12 col-md-4">
           <div className="form-floating">
             <input
               type="text"
               id="telefono"
               className={getInputClassName("telefono")}
               placeholder="telefono"
-              aria-label="telefono"
               {...register("telefono")}
             />
-            <label htmlFor="telefono">telefono</label>
+            <label htmlFor="telefono">Teléfono</label>
             {errors.telefono?.message && (
               <div className="invalid-feedback">{errors.telefono?.message}</div>
             )}
           </div>
         </div>
-        <div className="col">
+
+        {/* Mensaje */}
+        <div className="col-12">
           <div className="form-floating">
             <textarea
               id="mensaje"
               className={getInputClassName("mensaje")}
               placeholder="mensaje de reclamo"
-              aria-label="mensaje"
+              style={{ minHeight: "120px" }}
               {...register("mensaje")}
             />
-            <label className="z-0" htmlFor="mensaje">
-              Descripción:
-            </label>
+            <label htmlFor="mensaje">Descripción</label>
             {errors.mensaje?.message && (
               <div className="invalid-feedback">{errors.mensaje?.message}</div>
             )}
@@ -175,8 +179,9 @@ function FormReclamo({ onSubmit, defaultValues }) {
         </div>
       </div>
 
-      <div className="modal-footer">
-        <button type="submit" className="btn btn-success">
+      {/* Botón */}
+      <div className="col-12 text-end">
+        <button type="submit" className="btn btn-success px-4 py-2">
           Enviar
         </button>
       </div>

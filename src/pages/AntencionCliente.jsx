@@ -68,7 +68,7 @@ export default function AtencionCliente() {
                 }}
               />
               <label className="btn btn-outline-success" htmlFor="btncheck2">
-                Oficinas de Atención
+                Oficinas Atención
               </label>
 
               <input
@@ -91,7 +91,10 @@ export default function AtencionCliente() {
                   });
                 }}
               />
-              <label className="btn btn-outline-success" htmlFor="btncheck3">
+              <label
+                className="btn btn-outline-success d-flex justify-content-center align-items-center "
+                htmlFor="btncheck3"
+              >
                 Contactanos
               </label>
               <input
@@ -115,7 +118,7 @@ export default function AtencionCliente() {
                 }}
               />
               <label className="btn btn-outline-success" htmlFor="btncheck4">
-                Consulta de Deuda
+                Consultar Deuda
               </label>
             </div>
           </div>
@@ -147,7 +150,7 @@ export default function AtencionCliente() {
             <div
               id="collapseOficinas "
               style={{
-                width: openOficina ? "50%" : "0",
+                width: openOficina ? "100%" : "0",
                 overflow: "hidden",
                 transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 display: "inline-block",
@@ -190,7 +193,7 @@ export default function AtencionCliente() {
             <div
               id="collapseDeuda"
               style={{
-                width: openConsultaDeuda ? "80%" : "0",
+                width: openConsultaDeuda ? "90%" : "0",
                 overflow: "hidden",
                 transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 display: "inline-block",
@@ -407,6 +410,7 @@ function Reclamos() {
     telefono: "",
     mensaje: "",
   };
+
   const onSubmit = async (data, reset) => {
     try {
       const response = await fetch(`${endpoint}/createReclamo`, {
@@ -423,43 +427,55 @@ function Reclamos() {
       console.error("Error enviando datos:", error);
     }
   };
+
   return (
-    <div className="row">
+    <div className="row flex-column flex-lg-row">
+      {/* Columna izquierda */}
       <div
-        className="col text-white border rounded-start-5"
+        className="col-12 col-lg text-white border rounded-start-5 px-4 py-4"
         style={{
           backgroundColor: "#1c5e32",
           borderRight: "12px solid #FFD600",
           backgroundImage: `url(${ciudad})`,
           backgroundRepeat: "repeat-x",
           backgroundPosition: "bottom",
-          backgroundSize: "auto 100px",
-
-          paddingBottom: "8%",
+          backgroundSize: "cover",
         }}
       >
-        <div className="d-flex justify-content-center align-items-center mt-4">
-          <img src={logo} alt="" width="10%" height="35" />
-
-          <img src={logo2} alt="" width="15%" height="25" />
+        <div className="d-flex justify-content-center align-items-center mb-4 gap-3">
+          <img
+            src={logo}
+            alt="Logo 1"
+            className="img-fluid"
+            style={{ height: "35px" }}
+          />
+          <img
+            src={logo2}
+            alt="Logo 2"
+            className="img-fluid"
+            style={{ height: "25px" }}
+          />
         </div>
-        <h3 className=" display-4 text-center m-5">Contactanos:</h3>
-        <ul className="list-group list-group-flush text-start m-5">
+
+        <h3 className="display-6 text-center mb-4">Contáctanos:</h3>
+        <ul className="list-group list-group-flush text-start mb-4">
           <li className="list-group-item list-group-item-success">
             <strong>Teléfono:</strong> 0212-1234567
           </li>
-          <li className="list-group-item  list-group-item-success">
-            <strong>Correo Electrónico:</strong>
+          <li className="list-group-item list-group-item-success">
+            <strong>Correo Electrónico:</strong> contacto@ejemplo.com
           </li>
           <li className="list-group-item list-group-item-success">
-            <strong>Dirección Física:</strong>
+            <strong>Dirección Física:</strong> Calle Principal #123
           </li>
         </ul>
       </div>
-      <div className="col m-5">
-        <h3 className="text-center m-5">
-          Puedes ingresar tu inquietud atraves del siguiente formulario:
-        </h3>
+
+      {/* Columna derecha */}
+      <div className="col-12 col-lg px-4 py-4">
+        <h4 className="text-center mb-4">
+          Puedes ingresar tu inquietud a través del siguiente formulario:
+        </h4>
         <FormReclamo onSubmit={onSubmit} defaultValues={defaultValues} />
       </div>
     </div>
@@ -507,23 +523,40 @@ function ConsultaDeuda() {
           </div>
         </div>
         {sabeCuenta === true && (
-          <p>
-            Puedes consultar tu deuda ingresando a la sección:
-            <section
-              className=" "
-              style={{ width: "100%", height: "700px", margin: "0% 0% 0% 15%" }}
-            >
-              <iframe
-                src="https://ov-capital.corpoelec.gob.ve/index.php/Login/saldo"
-                title="Vista externa"
-                width="100%"
-                height="100%"
-                style={{ border: "none" }}
-              />
-            </section>
-          </p>
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-12 col-md-8">
+                <p>
+                  Puedes consultar tu deuda ingresando a la sección:
+                  <section
+                    className=" "
+                    style={{
+                      width: "100%",
+                      height: "700px",
+                    }}
+                  >
+                    <iframe
+                      src="https://ov-capital.corpoelec.gob.ve/index.php/Login/saldo"
+                      title="Vista externa"
+                      width="100%"
+                      height="100%"
+                      style={{ border: "none" }}
+                    />
+                  </section>
+                </p>
+              </div>
+            </div>
+          </div>
         )}
-        {sabeCuenta === false && <FormUsuarioBuscar />}
+        {sabeCuenta === false && (
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-12 col-md-8">
+                <FormUsuarioBuscar />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

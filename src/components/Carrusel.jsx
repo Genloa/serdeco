@@ -7,7 +7,7 @@ export default function Carrusel({ carruselItems }) {
       className="carousel slide carousel-fade"
       data-bs-ride="carousel"
       data-bs-interval="3000"
-      style={{ width: "100vw", height: "80vh" }}
+      style={{ width: "100%", height: "85vh" }}
     >
       <div className="carousel-inner">
         {carruselItems.map((Item, idx) => (
