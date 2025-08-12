@@ -90,7 +90,7 @@ export default function Navbar() {
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle text-light"
-                href="#quienes-somos"
+                href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -198,11 +198,11 @@ export default function Navbar() {
                 Mapa de Cobertura
               </a>
             </li>
-            <li className="nav-item">
+            {/*<li className="nav-item">
               <a className="nav-link text-light" href="#" onClick={closeMenu}>
                 Noticias
               </a>
-            </li>
+            </li>*/}
           </ul>
         </div>
 

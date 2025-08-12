@@ -29,7 +29,6 @@ function FormReclamo({ onSubmit, defaultValues }) {
   };
 
   const onSubmitForm = (data) => {
-    console.log("Datos del formulario antes de enviar:", data);
     // Aseguramos que los campos existen y son strings
     const cedula = data.cedula || "";
     const tipoCedula = data.tipoCedula || "";

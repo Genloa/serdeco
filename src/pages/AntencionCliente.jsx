@@ -220,7 +220,7 @@ export default function AtencionCliente() {
 
 function PreguntasFrecuentes() {
   const [preguntas, setPreguntas] = useState([]);
-  const endpoint = "http://localhost:3002/api";
+  const endpoint = "http://serdeco.com.ve:3002/api";
 
   useEffect(() => {
     fetchPreguntas();
@@ -283,7 +283,7 @@ function OficinasAtencion() {
   const [oficinas, setOficinas] = useState([]);
   const [estadoSeleccionado, setEstadoSeleccionado] = useState(null);
   const [oficinasFiltradas, setOficinasFiltradas] = useState([]);
-  const endpoint = "http://localhost:3002/api";
+  const endpoint = "http://serdeco.com.ve:3002/api";
 
   useEffect(() => {
     fetchData();
@@ -293,7 +293,7 @@ function OficinasAtencion() {
     try {
       const response = await fetch(`${endpoint}/getOficinas`);
       const data = await response.json();
-      console.log(data);
+
       // Estados únicos
       const estadosUnicos = [];
       const seenEstados = new Set();
@@ -306,7 +306,7 @@ function OficinasAtencion() {
       });
 
       setEstados(estadosUnicos);
-      console.log(estadosUnicos);
+
       // Guardar también los estados limpios en las oficinas
       const oficinasLimpias = data.map((oficina) => ({
         ...oficina,
@@ -398,7 +398,8 @@ function OficinasAtencion() {
 }
 
 function Reclamos() {
-  const endpoint = "http://localhost:3002/api";
+  const [oficinas, setOficinas] = useState([]);
+  const endpoint = "http://serdeco.com.ve:3002/api";
 
   const defaultValues = {
     nombre: "",
@@ -409,6 +410,39 @@ function Reclamos() {
     correo: "",
     telefono: "",
     mensaje: "",
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`${endpoint}/getOficinas`);
+      const data = await response.json();
+
+      // Estados únicos
+      const estadosUnicos = [];
+      const seenEstados = new Set();
+      data.forEach((item) => {
+        const estadoLimpio = item.estado ? item.estado.trim() : "";
+        if (estadoLimpio && !seenEstados.has(estadoLimpio)) {
+          seenEstados.add(estadoLimpio);
+          estadosUnicos.push({ value: estadoLimpio, label: estadoLimpio });
+        }
+      });
+
+      const oficinaLimpia = data.find((oficina) => oficina.id === 1);
+
+      const oficinaConEstadoLimpio = oficinaLimpia
+        ? {
+            ...oficinaLimpia,
+            estado: oficinaLimpia.estado ? oficinaLimpia.estado.trim() : "",
+          }
+        : null;
+
+      setOficinas(oficinaConEstadoLimpio);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const onSubmit = async (data, reset) => {
@@ -421,7 +455,7 @@ function Reclamos() {
         body: JSON.stringify(data),
       });
       const result = await response.json();
-      console.log("Resultados de la consulta:", result);
+      alert("Reclamo enviado con éxito. Número de reclamo: " + result.id);
       reset();
     } catch (error) {
       console.error("Error enviando datos:", error);
@@ -460,13 +494,15 @@ function Reclamos() {
         <h3 className="display-6 text-center mb-4">Contáctanos:</h3>
         <ul className="list-group list-group-flush text-start mb-4">
           <li className="list-group-item list-group-item-success">
-            <strong>Teléfono:</strong> 0212-1234567
+            <strong>Teléfono:</strong> {oficinas.telefono}
           </li>
           <li className="list-group-item list-group-item-success">
-            <strong>Correo Electrónico:</strong> contacto@ejemplo.com
+            <strong>Correo Electrónico: </strong>
+            {oficinas.correo}
           </li>
           <li className="list-group-item list-group-item-success">
-            <strong>Dirección Física:</strong> Calle Principal #123
+            <strong>Dirección Sede Principal:</strong> {oficinas.estado},{" "}
+            {oficinas.direccion}
           </li>
         </ul>
       </div>
@@ -483,7 +519,39 @@ function Reclamos() {
 }
 
 function ConsultaDeuda() {
+  const [progress, setProgress] = useState(0);
+  const [cuenta, setCuenta] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [sabeCuenta, setSabeCuenta] = useState(null);
+  const [datosUsuario, setDatosUsuario] = useState(null);
+  const endpoint = "http://serdeco.com.ve:3002/api";
+  const defaultValues = {
+    cedula: "",
+  };
+  const onSubmit = async (data, reset) => {
+    try {
+      setLoading(true);
+      setDatosUsuario(null);
+
+      const response = await fetch(`${endpoint}/getUsuarioCatastro`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      setProgress(60);
+      const result = await response.json();
+      setProgress(100);
+      setDatosUsuario(result);
+
+      reset();
+    } catch (error) {
+      console.error("Error enviando datos:", error);
+      setLoading(false);
+      setProgress(0);
+    }
+  };
 
   return (
     <>
@@ -528,6 +596,7 @@ function ConsultaDeuda() {
               <div className="col-12 col-md-8">
                 <p>
                   Puedes consultar tu deuda ingresando a la sección:
+                  {cuenta && <h1>{cuenta}</h1>}
                   <section
                     className=" "
                     style={{
@@ -552,8 +621,136 @@ function ConsultaDeuda() {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-12 col-md-8">
-                <FormUsuarioBuscar />
+                <FormUsuarioBuscar
+                  onSubmit={onSubmit}
+                  defaultValues={defaultValues}
+                  setProgress={setProgress}
+                />
               </div>
+              <div className="col-12 col-md-8">
+                {loading && (
+                  <div
+                    className="progress mb-3"
+                    role="progressbar"
+                    aria-label="Success striped example"
+                    aria-valuenow={progress}
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      className="progress-bar progress-bar-striped bg-success"
+                      style={{ width: `${progress}%` }}
+                    >
+                      {progress}%
+                    </div>
+                  </div>
+                )}
+              </div>
+              {Array.isArray(datosUsuario) && datosUsuario.length > 0 && (
+                <div className="col-12 col-md-8 border rounded-4 p-3 mt-4 mb-4">
+                  <h5 className="text-center">Resultados de la Consulta:</h5>
+
+                  {/* Tabla para pantallas medianas y grandes */}
+                  <div className="d-none d-md-block">
+                    <table className="table mt-4">
+                      <thead className="table-success">
+                        <tr>
+                          <th>Usuario</th>
+                          <th>Cédula</th>
+                          <th>Cuenta Contrato</th>
+                          <th>Dirección</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {datosUsuario
+                          .filter(
+                            (usuario, index, self) =>
+                              index ===
+                              self.findIndex(
+                                (u) =>
+                                  u.cedula === usuario.cedula &&
+                                  u.cuentaContrato === usuario.cuentaContrato &&
+                                  u.direccion === usuario.direccion
+                              )
+                          )
+                          .map((usuario, index) => (
+                            <tr key={index}>
+                              <td>
+                                {usuario.nombre} {usuario.apellido}
+                              </td>
+                              <td>{usuario.cedula}</td>
+                              <td>
+                                <button
+                                  type="button"
+                                  className="btn btn-success"
+                                  onClick={() => {
+                                    setCuenta(usuario.cuentaContrato);
+                                    setSabeCuenta(true);
+                                  }}
+                                >
+                                  {usuario.cuentaContrato}{" "}
+                                </button>
+                              </td>
+                              <td>{usuario.direccion}</td>
+                            </tr>
+                          ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* Tarjetas para móviles */}
+                  <div className="d-block d-md-none">
+                    {datosUsuario
+                      .filter(
+                        (usuario, index, self) =>
+                          index ===
+                          self.findIndex(
+                            (u) =>
+                              u.cedula === usuario.cedula &&
+                              u.cuentaContrato === usuario.cuentaContrato &&
+                              u.direccion === usuario.direccion
+                          )
+                      )
+                      .map((usuario, index) => (
+                        <div key={index} className="card mb-3">
+                          <div className="card-body">
+                            <p>
+                              <strong>Usuario:</strong> {usuario.nombre}{" "}
+                              {usuario.apellido}
+                            </p>
+                            <p>
+                              <strong>Cédula:</strong> {usuario.cedula}
+                            </p>
+                            <p>
+                              <strong>Cuenta Contrato:</strong>{" "}
+                              <button
+                                type="button"
+                                className="btn btn-success"
+                                onClick={() => {
+                                  setCuenta(usuario.cuentaContrato);
+                                  setSabeCuenta(true);
+                                }}
+                              >
+                                {usuario.cuentaContrato}{" "}
+                              </button>
+                            </p>
+                            <p>
+                              <strong>Dirección:</strong> {usuario.direccion}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              )}
+
+              {datosUsuario && datosUsuario.length === 0 && (
+                <div className="col-12 col-md-8">
+                  <div className="alert alert-warning" role="alert">
+                    No se encontraron resultados para la cédula proporcionada.
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}

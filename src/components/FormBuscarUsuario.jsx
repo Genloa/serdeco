@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { buscarUsuarioSchema } from "../validations/buscarUsuarioSchema";
 
-function FormUsuarioBuscar({ onSubmit, defaultValues }) {
+function FormUsuarioBuscar({ onSubmit, defaultValues, setProgress }) {
   const {
     register,
     handleSubmit,
@@ -29,8 +29,8 @@ function FormUsuarioBuscar({ onSubmit, defaultValues }) {
   };
 
   const onSubmitForm = (data) => {
-    console.log("Datos del formulario antes de enviar:", data);
     onSubmit(data, reset);
+    setProgress(20);
   };
   return (
     <form className="row g-3" onSubmit={handleSubmit(onSubmitForm)}>
@@ -51,22 +51,6 @@ function FormUsuarioBuscar({ onSubmit, defaultValues }) {
             )}
           </div>
         </div>
-        <div className="col-12">
-          <div className="form-floating">
-            <input
-              type="text"
-              id="correo"
-              className={getInputClassName("correo")}
-              placeholder="correo"
-              aria-label="correo"
-              {...register("correo")}
-            />
-            <label htmlFor="correo">correo</label>
-            {errors.correo?.message && (
-              <div className="invalid-feedback">{errors.correo?.message}</div>
-            )}
-          </div>
-        </div>
       </div>
 
       <div className="modal-footer">
@@ -81,6 +65,7 @@ function FormUsuarioBuscar({ onSubmit, defaultValues }) {
 FormUsuarioBuscar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   defaultValues: PropTypes.object.isRequired,
+  setProgress: PropTypes.func.isRequired,
 };
 
 export default FormUsuarioBuscar;

@@ -2,7 +2,7 @@ import somos from "../assets/img/somos.png";
 
 export default function Somos() {
   return (
-    <div className="row align-items-center m-5" id="quienes-somos">
+    <section className="row align-items-center m-5" id="quienes-somos">
       <div className="col-md-5">
         <img src={somos} alt="Imagen sobre Serdeco" className="img-fluid" />
       </div>
@@ -33,6 +33,6 @@ export default function Somos() {
           </li>
         </ul>
       </div>
-    </div>
+    </section>
   );
 }

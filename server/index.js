@@ -1,29 +1,40 @@
-// Importa el módulo 'cors'. CORS es un paquete de node.js para proporcionar un middleware Connect/Express
-// que se puede usar para habilitar CORS con varias opciones.
+import path from "path";
+import { fileURLToPath } from "url";
 import cors from "cors";
-
-// Importa el módulo 'express'. Express es un marco de aplicación web para node.js
-// diseñado para construir aplicaciones web y API.
 import express from "express";
 
 import operadoras from "./routes/operadoras/getOperadoras.routes.js";
 import oficinas from "./routes/oficinas/getOficinas.routes.js";
 import reclamos from "./routes/reclamos/createReclamo.routes.js";
 import preguntasFrecuentes from "./routes/preguntasfrecuentes/getPreguntasFrecuentes.route.js";
+import postUsuarioCatastro from "./routes/catastro/postUsuarioCatastro.routes.js";
+
 const app = express();
 
-// Usa el middleware CORS. Esto permite o restringe los recursos solicitados en la página web
-// para interactuar con los recursos de un dominio diferente.
+// Middlewares
 app.use(cors());
-
-// Usa el middleware express.json(). Este es un middleware incorporado en Express.
-// Analiza las solicitudes entrantes con cargas útiles JSON y se basa en body-parser.
-
 app.use(express.json({ limit: "10mb" }));
+
+// Rutas API
 app.use("/api", operadoras);
 app.use("/api", oficinas);
 app.use("/api", reclamos);
 app.use("/api", preguntasFrecuentes);
-app.listen(3002);
+app.use("/api", postUsuarioCatastro);
 
-console.log("server on port", 3002);
+// Configura __dirname para ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Servir archivos estáticos del frontend
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("/{*splat}", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
+});
+
+// Inicia el servidor al final
+const PORT = 3002;
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
+});

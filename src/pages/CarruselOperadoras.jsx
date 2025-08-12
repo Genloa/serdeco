@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function CarruselOperadoras() {
   const [logos, setLogos] = useState([]);
-  const endpoint = "http://localhost:3002/api";
+  const endpoint = "http://serdeco.com.ve:3002/api";
 
   useEffect(() => {
     fetchLogos();

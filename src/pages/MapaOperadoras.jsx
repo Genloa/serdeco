@@ -23,7 +23,7 @@ export default function MapaOperadoras() {
     "La Guaira",
     "Yaracuy",
   ];
-  const endpoint = "http://localhost:3002/api";
+  const endpoint = "http://serdeco.com.ve:3002/api";
   const [operadoras, setOperadoras] = useState([]);
 
   useEffect(() => {
@@ -35,7 +35,6 @@ export default function MapaOperadoras() {
       const response = await fetch(`${endpoint}/getOperadoras`);
       const fetched = await response.json();
       setOperadoras(fetched);
-      console.log("Operadoras fetched:", fetched);
     } catch (error) {
       console.error("Error fetching operadoras:", error);
     }

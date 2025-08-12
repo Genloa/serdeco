@@ -58,6 +58,7 @@ model reclamos {
 }
 
 model catastro {
+  id             Int        @id @default(autoincrement())
   interlocutor   BigInt
   fecha          DateTime
   tarifa         String?
@@ -72,7 +73,7 @@ model catastro {
   cedula         String?
   fechalta       String
   fechbaja       String
-  contrato       BigInt     @id
+  contrato       BigInt
   telefono1      String?
   telefono2      String?
   operadoras     operadoras @relation(fields: [interlocutor], references: [interlocutor], onDelete: NoAction, onUpdate: NoAction, map: "operadora_catastro")

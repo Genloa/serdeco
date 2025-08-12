@@ -7,7 +7,6 @@ const prisma = new PrismaClient();
 router.post("/createReclamo", async (req, res) => {
   try {
     const data = req.body;
-    console.log("Datos recibidos:", data);
 
     const reclamo = await prisma.reclamos.create({
       data: {
