@@ -1,13 +1,16 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import Collapse from "bootstrap/js/dist/collapse";
 import logo from "../assets/img/logo_1.png";
 import logo2 from "../assets/img/logo_2.png";
+import { OpcionContext } from "./OpcionContext";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const { setOpcion } = useContext(OpcionContext);
   const [open, setOpen] = useState(false);
   const navRef = useRef();
   const collapseInstance = useRef(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (navRef.current) {
       collapseInstance.current = new Collapse(navRef.current, {
@@ -77,13 +80,13 @@ export default function Navbar() {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a
+              <NavLink
                 className="nav-link active text-light"
-                href="#"
+                to="/"
                 onClick={closeMenu}
               >
                 Inicio
-              </a>
+              </NavLink>
             </li>
 
             {/* Quienes Somos */}
@@ -101,8 +104,14 @@ export default function Navbar() {
                 <li>
                   <a
                     className="dropdown-item text-light"
-                    href="#quienes-somos"
-                    onClick={closeMenu}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("quienes-somos")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                      closeMenu();
+                    }}
                   >
                     Somos
                   </a>
@@ -110,17 +119,30 @@ export default function Navbar() {
                 <li>
                   <a
                     className="dropdown-item text-light"
-                    href="#Historia"
-                    onClick={closeMenu}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("Historia")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                      closeMenu();
+                    }}
                   >
                     Historia
                   </a>
                 </li>
+
                 <li>
                   <a
                     className="dropdown-item text-light"
-                    href="#Valores"
-                    onClick={closeMenu}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("Valores")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                      closeMenu();
+                    }}
                   >
                     Valores
                   </a>
@@ -128,17 +150,29 @@ export default function Navbar() {
                 <li>
                   <a
                     className="dropdown-item text-light"
-                    href="#testimonios"
-                    onClick={closeMenu}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("serviciosAtencion")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                      closeMenu();
+                    }}
                   >
-                    Testimonios
+                    Servicios de Atención
                   </a>
                 </li>
                 <li>
                   <a
                     className="dropdown-item text-light"
-                    href="#misionyvision"
-                    onClick={closeMenu}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("misionyvision")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                      closeMenu();
+                    }}
                   >
                     Misión y Visión
                   </a>
@@ -161,8 +195,15 @@ export default function Navbar() {
                 <li>
                   <a
                     className="dropdown-item text-light"
-                    href="#antencioncliente"
-                    onClick={closeMenu}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("antencioncliente")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                      closeMenu();
+                      setOpcion({ estado: true, tipo: 1 });
+                    }}
                   >
                     Preguntas Frecuentes
                   </a>
@@ -170,8 +211,15 @@ export default function Navbar() {
                 <li>
                   <a
                     className="dropdown-item text-light"
-                    href="#antencioncliente"
-                    onClick={closeMenu}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("antencioncliente")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                      closeMenu();
+                      setOpcion({ estado: true, tipo: 2 });
+                    }}
                   >
                     Oficinas de Atención
                   </a>
@@ -179,10 +227,33 @@ export default function Navbar() {
                 <li>
                   <a
                     className="dropdown-item text-light"
-                    href="#antencioncliente"
-                    onClick={closeMenu}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("antencioncliente")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                      closeMenu();
+                      setOpcion({ estado: true, tipo: 3 });
+                    }}
                   >
-                    Reclamo
+                    Contactanos
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item text-light"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("antencioncliente")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                      closeMenu();
+                      setOpcion({ estado: true, tipo: 4 });
+                    }}
+                  >
+                    Consultar Deuda
                   </a>
                 </li>
               </ul>
@@ -192,16 +263,24 @@ export default function Navbar() {
             <li className="nav-item">
               <a
                 className="nav-link text-light"
-                href="#mapa"
-                onClick={closeMenu}
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/#mapa");
+                  closeMenu();
+                }}
               >
                 Mapa de Cobertura
               </a>
             </li>
             {/*<li className="nav-item">
-              <a className="nav-link text-light" href="#" onClick={closeMenu}>
+              <NavLink
+                className="nav-link active text-light"
+                to="/noticias"
+                onClick={closeMenu}
+              >
                 Noticias
-              </a>
+              </NavLink>
             </li>*/}
           </ul>
         </div>

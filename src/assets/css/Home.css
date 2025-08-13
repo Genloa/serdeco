@@ -32,7 +32,7 @@
 .carousel-control-prev,
 .carousel-control-next {
   width: 5%; /* Ancho de los botones */
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+
   border-radius: 50%; /* Botones redondeados */
 }
 

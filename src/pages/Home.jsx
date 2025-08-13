@@ -12,17 +12,21 @@ import Navbar from "../components/Navbar";
 import Historia from "./Historia";
 import MisionyVision from "./MisionyVision";
 import Somos from "../pages/Somos";
-import Testimonios from "./Testimonios";
+
 import Valores from "./Valores";
 
 import CarruselOperadoras from "./CarruselOperadoras";
 import MapaOperadoras from "./MapaOperadoras";
 import AtencionCliente from "./AntencionCliente";
 import Footer from "./Footer";
+import { OpcionProvider } from "../components/OpcionContext";
+import ServiciosAtencion from "./ServiciosAtencion";
+import ScrollToHash from "../components/ScrollToHash";
 
 function Home() {
   return (
-    <>
+    <OpcionProvider>
+      <ScrollToHash />
       <Contacto />
       <Modalinicio />
       <Navbar />
@@ -60,13 +64,13 @@ function Home() {
         <Somos />
         <Historia />
         <Valores />
-        <Testimonios />
+        <ServiciosAtencion />
         <MisionyVision />
         <MapaOperadoras />
         <AtencionCliente />
         <Footer />
       </div>
-    </>
+    </OpcionProvider>
   );
 }
 
