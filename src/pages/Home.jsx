@@ -22,6 +22,7 @@ import Footer from "./Footer";
 import { OpcionProvider } from "../components/OpcionContext";
 import ServiciosAtencion from "./ServiciosAtencion";
 import ScrollToHash from "../components/ScrollToHash";
+import Noticias from "./Noticias";
 
 function Home() {
   return (
@@ -68,6 +69,7 @@ function Home() {
         <MisionyVision />
         <MapaOperadoras />
         <AtencionCliente />
+        <Noticias />
         <Footer />
       </div>
     </OpcionProvider>
