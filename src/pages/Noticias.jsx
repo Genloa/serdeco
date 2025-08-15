@@ -9,24 +9,24 @@ function Noticias() {
       tipo: "principal",
       titulo: "Jornada de Cobranza DISTRITO CAPITAL",
       texto:
-        "Se llevó a cabo una jornada especial de registro y cobranza del servicio de aseo urbano en el municipio Libertador. La actividad se desarrolló en distintos sectores de la localidad, con el objetivo de facilitar el pago del servicio a los usuarios residenciales, comerciales e institucionales.",
-      fecha: "01/04/2025",
+        "Se realizó una jornada especial de cobranza del servicio de aseo urbano y relleno sanitario en Ciudad Tiuna, con el acompañamiento de Corpoelec. Esta actividad tuvo como propósito facilitar el pago del servicio a los usuarios residenciales, así como brindar información detallada sobre los distintos servicios disponibles y sus modalidades de pago.",
+      fecha: "14/07/2025",
     },
     {
       img: "/assets/img/noticia1.jpg",
       tipo: "secundaria",
-      titulo: "Convenios de Pago",
+      titulo: "Cobranza de Servicios Municipio Hatillo",
       texto:
-        "¿Necesitas ayuda? Nuestro equipo te atiende personalmente en nuestras oficinas. Recibimos tus solicitudes, reclamos o consultas con rapidez y compromiso. ¡Tu caso importa!",
-      fecha: "25/07/2025",
+        "En el Centro Comercial La Muralla, ubicado en el Municipio El Hatillo, se llevó a cabo una jornada especial de atención al usuario para el cobro del servicio de aseo urbano y relleno sanitario. La actividad contó con el respaldo de Corpoelec y buscó facilitar el proceso de pago.",
+      fecha: "27/05/2025",
     },
     {
       img: "/assets/img/noticia3.jpg",
       tipo: "secundaria",
-      titulo: "Atención a las Operadoras",
+      titulo: "Visitas a Comercios la Candelaria",
       texto:
-        "¿Eres una operadora de aseo o relleno? Nosotros nos encargamos de la facturación y atención al usuario, para que tú te enfoques en lo que haces mejor. ¡Confía en nuestra gestión eficiente y transparente!",
-      fecha: "24/06/2025",
+        "Como parte del plan de recuperación de ingresos, se visitaron establecimientos comerciales en la parroquia Candelaria, Distrito Capital, para notificar deudas por el servicio de aseo urbano y ofrecer alternativas de regularización.",
+      fecha: "24/04/2025",
     },
   ];
 
