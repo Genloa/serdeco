@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import Collapse from "bootstrap/js/dist/collapse";
-import logo from "../assets/img/logo_1.png";
+import logo from "../../public/assets/img/logoserdeco.png";
 import logo2 from "../assets/img/logo_2.png";
 import { OpcionContext } from "./OpcionContext";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -52,28 +52,65 @@ export default function Navbar() {
       style={{ backgroundColor: "#1c5e32" }}
     >
       <div className="container-fluid">
+        <style>
+          {`
+            .dropdown-menu li:hover .dropdown-item {
+              color: #1c5e32 !important;
+            }
+
+            @media (max-width: 768px) {
+              .dropdown-menu {
+                position: static !important;
+                width: 100%;
+              }
+            .scroll-serdeco{
+            display: none;
+            }
+            .media {
+           display: block !important;
+            }
+            }
+          `}
+        </style>
         {/* Logos */}
         {showLogos && (
-          <>
-            <a className="navbar-brand" href="#">
+          <div className="scroll-serdeco">
+            <a href="#">
               <img
                 src={logo}
                 alt="Logo 1"
                 className="img-fluid"
-                style={{ height: "35px" }}
+                style={{ height: "40px" }}
               />
             </a>
-            <a className="navbar-brand ms-3 mb-1" href="#">
+            <a className="navbar-brand ms-1 mb-1" href="#">
               <img
                 src={logo2}
                 alt="Logo 2"
                 className="img-fluid"
-                style={{ height: "25px" }}
+                style={{ height: "20px" }}
               />
             </a>
-          </>
+          </div>
         )}
-
+        <div className="media" style={{ display: "none" }}>
+          <a href="#">
+            <img
+              src={logo}
+              alt="Logo 1"
+              className="img-fluid"
+              style={{ height: "40px" }}
+            />
+          </a>
+          <a className="navbar-brand ms-1 mb-1" href="#">
+            <img
+              src={logo2}
+              alt="Logo 2"
+              className="img-fluid"
+              style={{ height: "20px" }}
+            />
+          </a>
+        </div>
         {/* Botón hamburguesa */}
         <button
           className="btn btn-outline-light d-block d-lg-none"
@@ -286,6 +323,19 @@ export default function Navbar() {
                 Mapa de Cobertura
               </a>
             </li>
+            <li className="nav-item">
+              <a
+                className="nav-link text-light"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/#noticias");
+                  closeMenu();
+                }}
+              >
+                Noticias
+              </a>
+            </li>
             {/*<li className="nav-item">
               <NavLink
                 className="nav-link active text-light"
@@ -297,22 +347,6 @@ export default function Navbar() {
             </li>*/}
           </ul>
         </div>
-
-        {/* Estilos personalizados */}
-        <style>
-          {`
-            .dropdown-menu li:hover .dropdown-item {
-              color: #1c5e32 !important;
-            }
-
-            @media (max-width: 768px) {
-              .dropdown-menu {
-                position: static !important;
-                width: 100%;
-              }
-            }
-          `}
-        </style>
       </div>
     </nav>
   );

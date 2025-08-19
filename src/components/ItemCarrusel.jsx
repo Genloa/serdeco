@@ -14,7 +14,7 @@ export default function ItemCarrusel({
       {/* Estilos responsivos para móvil */}
       <style>
         {`
-    @media (max-width: 576px) {
+     @media (max-width: 576px) {
       .itemc-img-main {
         width: 11rem !important;
         height: 14rem !important;
@@ -28,27 +28,30 @@ export default function ItemCarrusel({
         width: 12rem !important;
         height: 12rem !important;
         margin-left: 4rem !important;
-        margin-top: 0.5rem !important; /* Menos espacio arriba */
+        margin-top: -11rem !important; /* Menos espacio arriba */
       }
       .itemc-yellow-circle {
         width: 5rem !important;
         height: 5rem !important;
         margin-left: 2rem !important;
-        margin-top: 2rem !important;
-      }
-      .itemc-text-col {
-        margin-top: 1rem !important; /* Ajuste de margen superior */
+        margin-top: -9rem !important;
       }
       .itemc-badge {
         font-size: 1.2rem !important;
         padding: 0.5rem 1rem !important;
+        margin-right: 5rem
+      }
+        .itemc-text-col {
+        margin-top: -12rem !important; /* Ajuste de margen superior */
       }
       .itemc-title {
         font-size: 1.8rem !important; /* Más compacto */
+        margin-right: 5rem
       }
       .itemc-subtitle {
         font-size: 1.2rem !important; /* Más legible */
         display: block !important;     /* Asegura que se muestre */
+        margin-right: 5rem
       }
         .cont {
         width: 20rem !important;
@@ -74,11 +77,11 @@ export default function ItemCarrusel({
         <div
           className="position-absolute top-0  start-50 translate-middle-y"
           style={{
-            width: "40rem",
-            height: "40rem",
+            width: "30rem",
+            height: "30rem",
             backgroundColor: " #49845ec2",
             borderRadius: "50%",
-            marginLeft: "5rem",
+            marginLeft: "20rem",
           }}
         ></div>
       </div>
@@ -106,7 +109,7 @@ export default function ItemCarrusel({
       {/* Contenido principal */}
       <div className="position-relative z-1 d-flex align-items-center min-vh-100 px-2 px-lg-5">
         <div className="container">
-          <div className="row align-items-center g-5">
+          <div className="row align-items-center g-5 ">
             {/* Lado izquierdo - Imagen */}
             <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start">
               <div className="position-relative">
@@ -117,46 +120,46 @@ export default function ItemCarrusel({
                   <div
                     className="position-absolute itemc-img-bg1"
                     style={{
-                      width: "39rem",
-                      height: "39rem",
+                      width: "34rem",
+                      height: "34rem",
                       backgroundColor: " #49845eff",
                       borderTopRightRadius: "50%",
                       borderTopLeftRadius: "50%",
-                      marginTop: "-12rem",
-                      marginLeft: "-17rem",
+                      marginTop: "-13rem",
+                      marginLeft: "-6rem",
                       rotate: "45deg",
                     }}
                   ></div>
                   <div
                     className="position-absolute itemc-img-bg2"
                     style={{
-                      width: "47rem",
-                      height: "47rem",
+                      width: "39rem",
+                      height: "39rem",
                       borderRadius: "50%",
                       border: "5px solid #FFD600",
-                      marginTop: "-15rem",
-                      marginLeft: "-21rem",
+                      marginTop: "-16rem",
+                      marginLeft: "-8rem",
                       rotate: "45deg",
                     }}
                   ></div>
                   <div
                     className="position-absolute itemc-img-bg3"
                     style={{
-                      width: "39rem",
-                      height: "39rem",
+                      width: "34rem",
+                      height: "34rem",
                       backgroundColor: " #49845eff",
-                      marginTop: "12rem",
-                      marginLeft: "-41rem",
+                      marginTop: "2rem",
+                      marginLeft: "-21rem",
                       rotate: "45deg",
                     }}
                   ></div>
                   <div
                     className="position-absolute rounded-circle overflow-hidden bg-white border border-5 border-white itemc-img-main itemc-img-circle"
                     style={{
-                      width: "35rem",
-                      height: "35rem",
-                      marginLeft: "-15rem",
-                      marginTop: "-10rem",
+                      width: "30rem",
+                      height: "30rem",
+                      marginLeft: "-4rem",
+                      marginTop: "-11rem",
                     }}
                   >
                     <img
@@ -172,8 +175,8 @@ export default function ItemCarrusel({
                       height: "9rem",
                       backgroundColor: "#FFD600",
                       borderRadius: "50%",
-                      marginLeft: "-16rem",
-                      marginTop: "7rem",
+                      marginLeft: "-5rem",
+                      marginTop: "3rem",
                     }}
                   ></div>
                 </div>
@@ -181,16 +184,19 @@ export default function ItemCarrusel({
             </div>
 
             {/* Lado derecho - Texto */}
-            <div className="col-12 col-lg-6 text-center text-lg-start itemc-text-col">
+            <div
+              className="col-12 col-lg-6 text-center text-lg-start itemc-text-col ms-5"
+              style={{ marginTop: "-10rem" }}
+            >
               {/* Badge de bienvenida */}
-              <div className="d-inline-block mb-3">
-                <span className="bg-warning text-success px-4 py-2 rounded-pill fs-1 fw-semibold itemc-badge">
+              <div className="d-inline-block mb-2">
+                <span className="bg-warning text-success px-4 py-2 rounded-pill fs-2 fw-semibold itemc-badge">
                   {welcomeText}
                 </span>
               </div>
 
               {/* Título principal */}
-              <h1 className="display-4 fw-bold text-white lh-tight itemc-title">
+              <h1 className="display-5 fw-bold text-white lh-tight itemc-title">
                 {mainHeading}
               </h1>
 
@@ -198,9 +204,6 @@ export default function ItemCarrusel({
               <p className="fs-5 text-warning fw-medium itemc-subtitle">
                 {subtitle}
               </p>
-
-              {/* Botón CTA */}
-              <div className="pt-3"></div>
             </div>
           </div>
         </div>

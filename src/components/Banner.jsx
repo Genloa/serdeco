@@ -1,4 +1,4 @@
-import logo from "../assets/img/logo_1.png";
+import logo from "../../public/assets/img/logoserdeco.png";
 import logo2 from "../assets/img/logo_2.png";
 import logo3 from "../../public/assets/img/logomppe.png"; // Nuevo logo
 import imagen from "../../public/assets/img/banner.png";
@@ -7,7 +7,7 @@ export default function Banner() {
   return (
     <div
       id="top-banner"
-      className="py-4 w-100"
+      className="w-100"
       style={{
         zIndex: 1031,
         backgroundImage: `linear-gradient(to right, #1c5e32, rgba(255, 255, 255, 0.3)), url('${imagen}')`,
@@ -16,22 +16,36 @@ export default function Banner() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="container">
+      <style>
+        {`
+     @media (max-width: 576px) {
+     .logo-serdeco {
+     display: none;
+     } 
+     }
+      
+  `}
+      </style>
+      <div>
         <div className="row align-items-center">
-          {/* Logo a la izquierda */}
           <div className="col-4 d-flex justify-content-start">
-            <img src={logo3} alt="Logo 3" style={{ height: "60px" }} />
+            <img src={logo3} alt="Logo 3" style={{ height: "90px" }} />
           </div>
 
           {/* Logos centrados */}
-          <div className="col-5 d-flex justify-content-center">
+          <div className="col-3 d-flex justify-content-center ">
             <img
+              className="logo-serdeco"
               src={logo}
               alt="Logo 1"
-              style={{ height: "35px" }}
-              className="me-3"
+              style={{ height: "90px" }}
             />
-            <img src={logo2} alt="Logo 2" style={{ height: "25px" }} />
+            <img
+              className="logo-serdeco"
+              src={logo2}
+              alt="Logo 2"
+              style={{ height: "30px", marginTop: "30px" }}
+            />
           </div>
         </div>
       </div>

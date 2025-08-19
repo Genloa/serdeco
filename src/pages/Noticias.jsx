@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import { OpcionProvider } from "../components/OpcionContext";
 import ScrollToHash from "../components/ScrollToHash";
 
@@ -33,7 +32,7 @@ function Noticias() {
   return (
     <OpcionProvider>
       <ScrollToHash />
-      <div className="container mt-4">
+      <div className="container mt-4" id="noticias">
         <h2 className="display-3 text-success text-center mb-5 fw-bold">
           Noticias
         </h2>
@@ -74,7 +73,6 @@ function Noticias() {
           </div>
         </div>
       </div>
-      <Navbar />
     </OpcionProvider>
   );
 }
