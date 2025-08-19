@@ -18,7 +18,16 @@ export default function Navbar() {
       });
     }
   }, []);
+  const [showLogos, setShowLogos] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setShowLogos(scrollY > 50); // Mostrar logos después de 50px de scroll
+    };
 
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const toggleMenu = () => {
     if (!collapseInstance.current) return;
 
@@ -39,27 +48,31 @@ export default function Navbar() {
 
   return (
     <nav
-      className="navbar navbar-expand-lg fixed-top navbar-light"
+      className="navbar navbar-expand-lg sticky-top navbar-light"
       style={{ backgroundColor: "#1c5e32" }}
     >
       <div className="container-fluid">
         {/* Logos */}
-        <a className="navbar-brand" href="#">
-          <img
-            src={logo}
-            alt="Logo 1"
-            className="img-fluid"
-            style={{ height: "35px" }}
-          />
-        </a>
-        <a className="navbar-brand ms-3 mb-1" href="#">
-          <img
-            src={logo2}
-            alt="Logo 2"
-            className="img-fluid"
-            style={{ height: "25px" }}
-          />
-        </a>
+        {showLogos && (
+          <>
+            <a className="navbar-brand" href="#">
+              <img
+                src={logo}
+                alt="Logo 1"
+                className="img-fluid"
+                style={{ height: "35px" }}
+              />
+            </a>
+            <a className="navbar-brand ms-3 mb-1" href="#">
+              <img
+                src={logo2}
+                alt="Logo 2"
+                className="img-fluid"
+                style={{ height: "25px" }}
+              />
+            </a>
+          </>
+        )}
 
         {/* Botón hamburguesa */}
         <button
