@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import geoUrl from "../assets/img/ve.json";
+import { BASE_API_URL } from "../core/constants";
 
 export default function MapaOperadoras() {
   // Lista de estados válidos
@@ -23,7 +24,6 @@ export default function MapaOperadoras() {
     "La Guaira",
     "Yaracuy",
   ];
-  const endpoint = "http://serdeco.com.ve:3002/api";
   const [operadoras, setOperadoras] = useState([]);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function MapaOperadoras() {
 
   const fetchOperadoras = async () => {
     try {
-      const response = await fetch(`${endpoint}/getOperadoras`);
+      const response = await fetch(`${BASE_API_URL}/getOperadoras`);
       const fetched = await response.json();
       setOperadoras(fetched);
     } catch (error) {

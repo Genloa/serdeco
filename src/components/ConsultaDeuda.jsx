@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BASE_API_URL } from "../core/constants";
 import FormUsuarioBuscar from "./FormBuscarUsuario";
 
 export default function ConsultaDeuda() {
@@ -7,7 +8,6 @@ export default function ConsultaDeuda() {
   const [loading, setLoading] = useState(false);
   const [sabeCuenta, setSabeCuenta] = useState(null);
   const [datosUsuario, setDatosUsuario] = useState(null);
-  const endpoint = "http://serdeco.com.ve:3002/api";
   const defaultValues = {
     cedula: "",
   };
@@ -16,7 +16,7 @@ export default function ConsultaDeuda() {
       setLoading(true);
       setDatosUsuario(null);
 
-      const response = await fetch(`${endpoint}/getUsuarioCatastro`, {
+      const response = await fetch(`${BASE_API_URL}/getUsuarioCatastro`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

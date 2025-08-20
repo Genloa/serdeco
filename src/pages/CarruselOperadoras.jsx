@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import { BASE_API_URL } from "../core/constants";
 
 export default function CarruselOperadoras() {
   const [logos, setLogos] = useState([]);
-  const endpoint = "http://serdeco.com.ve:3002/api";
 
   useEffect(() => {
     fetchLogos();
@@ -10,8 +10,9 @@ export default function CarruselOperadoras() {
 
   const fetchLogos = async () => {
     try {
-      const response = await fetch(`${endpoint}/getOperadoras`);
+      const response = await fetch(`${BASE_API_URL}/getOperadoras`);
       const operadoras = await response.json();
+
       // Filtrar logos únicos y válidos
       const logosUnicos = Array.from(
         new Map(

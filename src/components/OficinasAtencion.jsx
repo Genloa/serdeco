@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { BASE_API_URL } from "../core/constants";
 
 export default function OficinasAtencion() {
   const [estados, setEstados] = useState([]);
   const [oficinas, setOficinas] = useState([]);
   const [estadoSeleccionado, setEstadoSeleccionado] = useState(null);
   const [oficinasFiltradas, setOficinasFiltradas] = useState([]);
-  const endpoint = "http://serdeco.com.ve:3002/api";
 
   useEffect(() => {
     fetchData();
@@ -13,7 +13,7 @@ export default function OficinasAtencion() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${endpoint}/getOficinas`);
+      const response = await fetch(`${BASE_API_URL}/getOficinas`);
       const data = await response.json();
 
       // Estados únicos

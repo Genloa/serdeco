@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import ciudad from "../assets/img/ciudadverde.svg";
-import FormReclamo from "./FormReclamo";
 import logo from "../assets/img/logo_1.png";
 import logo2 from "../assets/img/logo_2.png";
+import { BASE_API_URL } from "../core/constants";
+import FormReclamo from "./FormReclamo";
 export default function Reclamos() {
   const [oficinas, setOficinas] = useState([]);
-  const endpoint = "http://serdeco.com.ve:3002/api";
 
   const defaultValues = {
     nombre: "",
@@ -22,7 +22,7 @@ export default function Reclamos() {
   }, []);
   const fetchData = async () => {
     try {
-      const response = await fetch(`${endpoint}/getOficinas`);
+      const response = await fetch(`${BASE_API_URL}/getOficinas`);
       const data = await response.json();
 
       // Estados únicos
@@ -53,7 +53,7 @@ export default function Reclamos() {
 
   const onSubmit = async (data, reset) => {
     try {
-      const response = await fetch(`${endpoint}/createReclamo`, {
+      const response = await fetch(`${BASE_API_URL}/createReclamo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

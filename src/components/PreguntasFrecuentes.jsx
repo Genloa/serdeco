@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
+import { BASE_API_URL } from "../core/constants";
 
 export default function PreguntasFrecuentes() {
   const [preguntas, setPreguntas] = useState([]);
-  const endpoint = "http://serdeco.com.ve:3002/api";
 
   useEffect(() => {
     fetchPreguntas();
-  }, [endpoint]);
+  }, []);
 
   const fetchPreguntas = async () => {
     try {
-      const response = await fetch(`${endpoint}/getPreguntasFrecuentes`);
+      const response = await fetch(`${BASE_API_URL}/getPreguntasFrecuentes`);
       const data = await response.json();
       setPreguntas(data);
     } catch (error) {
